@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace HomePage
 {
@@ -23,11 +24,51 @@ namespace HomePage
 
         }
 
+        public Boolean checkUserName()
+        {
+            if (txt_TenDangNhap.Text == "")
+            {
+                MessageBox.Show("Tên đang nhập không được để trống");
+                return false;
+            }
+            return true;
+        }
+
+        public Boolean checkPassword()
+        {
+            if (txt_MatKhau.Text == "")
+            {
+                MessageBox.Show("Mật khẩu không được để trống");
+                return false;
+            }
+            return true;
+        }
+
+
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
-            string sql = "SELECT * FROM ACCOUNT";
+            if (checkUserName() && checkPassword())
+            {
+                string sql = $"SELECT * FROM ACCOUNTS WHERE USERNAME = N'{txt_TenDangNhap.Text}' AND PASSWORD = N'{txt_MatKhau.Text}'";
+                DataTable dt = lopDungChung.LayDuLieuTuBang(sql);
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("Đăng nhập thành công");
+                    frm_Main mainForm = new frm_Main();
+                    this.Hide();
+                    mainForm.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại!");
+                }
+            }
+        }
 
-            //if (txt_TenDangNhap.Text)
+        private void txt_MatKhau_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

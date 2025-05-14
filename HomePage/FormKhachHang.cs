@@ -12,9 +12,91 @@ namespace HomePage
 {
     public partial class frm_KhachHang : Form
     {
+        LOPDUNGCHUNG lopDungChung = new LOPDUNGCHUNG();
         public frm_KhachHang()
         {
             InitializeComponent();
+        }
+
+        private void txt_Ghichu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+            string sql = $"INSERT INTO CUSTOMERS(FULLNAME, CCCD_PASSPORT, PHONE, EMAIL) VALUES(N'{txt_TenKhachHang.Text}', '{txt_CCCD.Text}', '{txt_SoDienThoai.Text}', '{txt_Email.Text}')";
+            int kq = lopDungChung.ThemSuaXoa(sql);
+            if (kq >= 1)
+            {
+                MessageBox.Show("Thêm khách hàng thành công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi thêm khách hàng");
+            }
+            LoadKhachHang();
+        }
+
+        private void lbl_SoDienThoai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void LoadKhachHang()
+        {
+            string sql = "SELECT * FROM CUSTOMERS";
+            dgv_DanhSachKhachHang.DataSource = lopDungChung.LayDuLieuTuBang(sql);
+            dgv_DanhSachKhachHang.Columns["CustomerID"].HeaderText = "Mã khách hàng";
+            dgv_DanhSachKhachHang.Columns["FullName"].HeaderText = "Tên khách hàng";
+            dgv_DanhSachKhachHang.Columns["CCCD_Passport"].HeaderText = "CCCD/Passport";
+            dgv_DanhSachKhachHang.Columns["Phone"].HeaderText = "Số điện thoại";
+            dgv_DanhSachKhachHang.Columns["Email"].HeaderText = "Email";
+        }
+
+        private void frm_KhachHang_Load(object sender, EventArgs e)
+        {
+            LoadKhachHang();
+
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            string sql = $"UPDATE CUSTOMERS SET FULLNAME = N'{txt_TenKhachHang.Text}', CCCD_PASSPORT = '{txt_CCCD.Text}', PHONE = '{txt_SoDienThoai.Text}', EMAIL = '{txt_Email.Text}' WHERE CUSTOMERID = '{txt_MaKhachHang.Text}'";
+            int kq = lopDungChung.ThemSuaXoa(sql);
+            if (kq >= 1)
+            {
+                MessageBox.Show("Sửa khách hàng thành công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi sửa khách hàng");
+            }
+            LoadKhachHang();
+        }
+
+        private void dgv_DanhSachKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_MaKhachHang.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
+            txt_TenKhachHang.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["FULLNAME"].Value.ToString();
+            txt_CCCD.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["CCCD_Passport"].Value.ToString();
+            txt_SoDienThoai.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["Phone"].Value.ToString();
+            txt_Email.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["Email"].Value.ToString();
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            string sql = $"DELETE FROM CUSTOMERS WHERE CUSTOMERID = '{txt_MaKhachHang.Text}'";
+            int kq = lopDungChung.ThemSuaXoa(sql);
+            if (kq >= 1)
+            {
+                MessageBox.Show("Xóa khách hàng thành công");
+            }
+            else
+            {
+                MessageBox.Show("Lỗi xóa khách hàng");
+            }
+            LoadKhachHang();
         }
     }
 }

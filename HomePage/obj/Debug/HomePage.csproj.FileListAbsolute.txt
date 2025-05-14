@@ -10,3 +10,5 @@ D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.pdb
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_KhachHang.resources
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_Login.resources
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_Main.resources
+D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan.mdf
+D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan_log.ldf
