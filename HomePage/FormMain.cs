@@ -52,5 +52,13 @@ namespace HomePage
             formKhachHang.ShowDialog();
             this.Close();
         }
+
+        private void mi_DanhSachPhong_Click(object sender, EventArgs e)
+        {
+            frm_DanhSachPhong formDanhSachPhong = new frm_DanhSachPhong();
+            this.Hide();
+            formDanhSachPhong.ShowDialog();
+            this.Close();
+        }
     }
 }
