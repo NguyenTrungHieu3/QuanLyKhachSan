@@ -47,7 +47,7 @@ namespace HomePage
         {
             string sql = "SELECT * FROM CUSTOMERS";
             dgv_DanhSachKhachHang.DataSource = lopDungChung.LayDuLieuTuBang(sql);
-            dgv_DanhSachKhachHang.Columns["CustomerID"].HeaderText = "Mã khách hàng";
+            dgv_DanhSachKhachHang.Columns["CustomerID"].Visible = false;
             dgv_DanhSachKhachHang.Columns["FullName"].HeaderText = "Tên khách hàng";
             dgv_DanhSachKhachHang.Columns["CCCD_Passport"].HeaderText = "CCCD/Passport";
             dgv_DanhSachKhachHang.Columns["Phone"].HeaderText = "Số điện thoại";
@@ -62,7 +62,8 @@ namespace HomePage
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            string sql = $"UPDATE CUSTOMERS SET FULLNAME = N'{txt_TenKhachHang.Text}', CCCD_PASSPORT = '{txt_CCCD.Text}', PHONE = '{txt_SoDienThoai.Text}', EMAIL = '{txt_Email.Text}' WHERE CUSTOMERID = '{txt_MaKhachHang.Text}'";
+            string maKhachHang = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
+            string sql = $"UPDATE CUSTOMERS SET FULLNAME = N'{txt_TenKhachHang.Text}', CCCD_PASSPORT = '{txt_CCCD.Text}', PHONE = '{txt_SoDienThoai.Text}', EMAIL = '{txt_Email.Text}' WHERE CUSTOMERID = '{maKhachHang}'";
             int kq = lopDungChung.ThemSuaXoa(sql);
             if (kq >= 1)
             {
@@ -77,7 +78,6 @@ namespace HomePage
 
         private void dgv_DanhSachKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txt_MaKhachHang.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
             txt_TenKhachHang.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["FULLNAME"].Value.ToString();
             txt_CCCD.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["CCCD_Passport"].Value.ToString();
             txt_SoDienThoai.Text = dgv_DanhSachKhachHang.CurrentRow.Cells["Phone"].Value.ToString();
@@ -86,7 +86,8 @@ namespace HomePage
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            string sql = $"DELETE FROM CUSTOMERS WHERE CUSTOMERID = '{txt_MaKhachHang.Text}'";
+            string maKhachHang = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
+            string sql = $"DELETE FROM CUSTOMERS WHERE CUSTOMERID = '{maKhachHang}'";
             int kq = lopDungChung.ThemSuaXoa(sql);
             if (kq >= 1)
             {

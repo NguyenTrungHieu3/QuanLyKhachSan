@@ -53,12 +53,20 @@ namespace HomePage
             this.Close();
         }
 
+<<<<<<< HEAD
         // Thêm phương thức để mở form quản lý dịch vụ
         private void quảnLýDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_Services formServices = new frm_Services();
             this.Hide();
             formServices.ShowDialog();
+=======
+        private void mi_DanhSachPhong_Click(object sender, EventArgs e)
+        {
+            frm_DanhSachPhong formDanhSachPhong = new frm_DanhSachPhong();
+            this.Hide();
+            formDanhSachPhong.ShowDialog();
+>>>>>>> origin/branch-hieu
             this.Close();
         }
     }

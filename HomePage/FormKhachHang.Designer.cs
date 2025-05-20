@@ -32,10 +32,8 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
             this.grb_ThongTin = new System.Windows.Forms.GroupBox();
-            this.txt_MaKhachHang = new System.Windows.Forms.TextBox();
             this.txt_TenKhachHang = new System.Windows.Forms.TextBox();
             this.lbl_TenKhachHang = new System.Windows.Forms.Label();
-            this.lbl_MaKhachHang = new System.Windows.Forms.Label();
             this.txt_Email = new System.Windows.Forms.TextBox();
             this.txt_SoDienThoai = new System.Windows.Forms.TextBox();
             this.txt_CCCD = new System.Windows.Forms.TextBox();
@@ -51,15 +49,17 @@
             // 
             // btn_Them
             // 
-            this.btn_Them.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btn_Them.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_Them.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btn_Them.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_Them.ForeColor = System.Drawing.Color.White;
             this.btn_Them.Location = new System.Drawing.Point(504, 210);
             this.btn_Them.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(120, 37);
             this.btn_Them.TabIndex = 2;
             this.btn_Them.Text = "Thêm";
-            this.btn_Them.UseVisualStyleBackColor = true;
+            this.btn_Them.UseVisualStyleBackColor = false;
             this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
             // btn_Xoa
@@ -90,10 +90,8 @@
             // 
             // grb_ThongTin
             // 
-            this.grb_ThongTin.Controls.Add(this.txt_MaKhachHang);
             this.grb_ThongTin.Controls.Add(this.txt_TenKhachHang);
             this.grb_ThongTin.Controls.Add(this.lbl_TenKhachHang);
-            this.grb_ThongTin.Controls.Add(this.lbl_MaKhachHang);
             this.grb_ThongTin.Controls.Add(this.txt_Email);
             this.grb_ThongTin.Controls.Add(this.txt_SoDienThoai);
             this.grb_ThongTin.Controls.Add(this.txt_CCCD);
@@ -109,19 +107,10 @@
             this.grb_ThongTin.TabStop = false;
             this.grb_ThongTin.Text = "Thông tin";
             // 
-            // txt_MaKhachHang
-            // 
-            this.txt_MaKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_MaKhachHang.Location = new System.Drawing.Point(173, 25);
-            this.txt_MaKhachHang.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_MaKhachHang.Name = "txt_MaKhachHang";
-            this.txt_MaKhachHang.Size = new System.Drawing.Size(247, 29);
-            this.txt_MaKhachHang.TabIndex = 0;
-            // 
             // txt_TenKhachHang
             // 
             this.txt_TenKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_TenKhachHang.Location = new System.Drawing.Point(173, 64);
+            this.txt_TenKhachHang.Location = new System.Drawing.Point(179, 28);
             this.txt_TenKhachHang.Margin = new System.Windows.Forms.Padding(4);
             this.txt_TenKhachHang.Name = "txt_TenKhachHang";
             this.txt_TenKhachHang.Size = new System.Drawing.Size(247, 29);
@@ -132,29 +121,17 @@
             this.lbl_TenKhachHang.AutoSize = true;
             this.lbl_TenKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_TenKhachHang.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbl_TenKhachHang.Location = new System.Drawing.Point(7, 68);
+            this.lbl_TenKhachHang.Location = new System.Drawing.Point(13, 32);
             this.lbl_TenKhachHang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TenKhachHang.Name = "lbl_TenKhachHang";
             this.lbl_TenKhachHang.Size = new System.Drawing.Size(153, 24);
             this.lbl_TenKhachHang.TabIndex = 58;
             this.lbl_TenKhachHang.Text = "Tên khách hàng:";
             // 
-            // lbl_MaKhachHang
-            // 
-            this.lbl_MaKhachHang.AutoSize = true;
-            this.lbl_MaKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_MaKhachHang.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbl_MaKhachHang.Location = new System.Drawing.Point(7, 28);
-            this.lbl_MaKhachHang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_MaKhachHang.Name = "lbl_MaKhachHang";
-            this.lbl_MaKhachHang.Size = new System.Drawing.Size(145, 24);
-            this.lbl_MaKhachHang.TabIndex = 2;
-            this.lbl_MaKhachHang.Text = "Mã khách hàng:";
-            // 
             // txt_Email
             // 
             this.txt_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_Email.Location = new System.Drawing.Point(636, 67);
+            this.txt_Email.Location = new System.Drawing.Point(636, 95);
             this.txt_Email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.Size = new System.Drawing.Size(247, 29);
@@ -172,7 +149,7 @@
             // txt_CCCD
             // 
             this.txt_CCCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_CCCD.Location = new System.Drawing.Point(173, 106);
+            this.txt_CCCD.Location = new System.Drawing.Point(179, 98);
             this.txt_CCCD.Margin = new System.Windows.Forms.Padding(4);
             this.txt_CCCD.Name = "txt_CCCD";
             this.txt_CCCD.Size = new System.Drawing.Size(247, 29);
@@ -183,7 +160,7 @@
             this.lbl_Email.AutoSize = true;
             this.lbl_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_Email.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbl_Email.Location = new System.Drawing.Point(477, 70);
+            this.lbl_Email.Location = new System.Drawing.Point(477, 98);
             this.lbl_Email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Email.Name = "lbl_Email";
             this.lbl_Email.Size = new System.Drawing.Size(57, 24);
@@ -208,7 +185,7 @@
             this.lbl_CCCD.AutoSize = true;
             this.lbl_CCCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_CCCD.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbl_CCCD.Location = new System.Drawing.Point(8, 106);
+            this.lbl_CCCD.Location = new System.Drawing.Point(14, 98);
             this.lbl_CCCD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_CCCD.Name = "lbl_CCCD";
             this.lbl_CCCD.Size = new System.Drawing.Size(144, 24);
@@ -282,10 +259,8 @@
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.GroupBox grb_ThongTin;
-        private System.Windows.Forms.TextBox txt_MaKhachHang;
         private System.Windows.Forms.TextBox txt_TenKhachHang;
         private System.Windows.Forms.Label lbl_TenKhachHang;
-        private System.Windows.Forms.Label lbl_MaKhachHang;
         private System.Windows.Forms.TextBox txt_Email;
         private System.Windows.Forms.TextBox txt_SoDienThoai;
         private System.Windows.Forms.TextBox txt_CCCD;
