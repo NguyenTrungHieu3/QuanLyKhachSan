@@ -25,66 +25,33 @@ namespace HomePage
 
         public int ThemSuaXoa(string sql)
         {
-            try
-            {
-                SqlCommand comm = new SqlCommand(sql, conn);
+            if (conn.State == ConnectionState.Closed)
                 conn.Open();
-                int kq = comm.ExecuteNonQuery();
-                return kq;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
+
+            SqlCommand comm = new SqlCommand(sql, conn);
+            int kq = comm.ExecuteNonQuery();
+            conn.Close(); 
+            return kq;
         }
 
         public object LayGiaTri(string sql)
         {
-            try
-            {
-                SqlCommand comm = new SqlCommand(sql, conn);
+            if (conn.State == ConnectionState.Closed)
                 conn.Open();
-                object kq = comm.ExecuteScalar();
-                return kq;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
+
+            SqlCommand comm = new SqlCommand(sql, conn);
+            object kq = comm.ExecuteScalar();
+            conn.Close(); 
+            return kq;
         }
 
         public DataTable LayDuLieuTuBang(string sql)
         {
-            try
-            {
-                DataTable dt = new DataTable();
-                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-                // SqlDataAdapter tự động mở và đóng kết nối khi Fill
-                da.Fill(dt);
-                return dt;
-            }
-            finally
-            {
-                // Đảm bảo kết nối đã đóng trong mọi trường hợp
-                if (conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
+            
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            da.Fill(dt);
+            return dt;
         }
     }
 }

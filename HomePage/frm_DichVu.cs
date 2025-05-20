@@ -10,23 +10,6 @@ namespace HomePage
         LOPDUNGCHUNG dc = new LOPDUNGCHUNG();
         private void frm_DichVu_Load(object sender, EventArgs e)
         {
-            // Tạo panel mới để chứa DataGridView
-            Panel panelGrid = new Panel();
-            panelGrid.Dock = DockStyle.Fill;
-            panelGrid.BackColor = Color.White;
-
-            // Đảm bảo DataGridView hiển thị
-            dgvServices.Dock = DockStyle.Fill;
-            dgvServices.Visible = true;
-
-            // Thêm DataGridView vào panel
-            panelGrid.Controls.Add(dgvServices);
-
-            // Thêm panel vào form
-            this.Controls.Add(panelGrid);
-
-            // Đưa panel lên trên cùng
-            panelGrid.BringToFront();
 
             LoadDataServices();
             ResetForm();
@@ -40,53 +23,16 @@ namespace HomePage
 
         private void LoadDataServices()
         {
-            try
-            {
-                // Load dữ liệu từ cơ sở dữ liệu
-                string sql = "SELECT * FROM Services";
-                DataTable dt = dc.LayDuLieuTuBang(sql);
-
-                // Kiểm tra xem có dữ liệu hay không
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    dgvServices.DataSource = dt;
-
-                    // Định dạng cột
-                    dgvServices.Columns["ServiceID"].HeaderText = "Mã dịch vụ";
-                    dgvServices.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
-                    dgvServices.Columns["Description"].HeaderText = "Mô tả";
-                    dgvServices.Columns["Price"].HeaderText = "Giá";
-                    dgvServices.Columns["Price"].DefaultCellStyle.Format = "N0";
-                }
-                else
-                {
-                    // Nếu không có dữ liệu, tạo dữ liệu mẫu để kiểm tra hiển thị
-                    DataTable dtTest = new DataTable();
-                    dtTest.Columns.Add("ServiceID", typeof(int));
-                    dtTest.Columns.Add("ServiceName", typeof(string));
-                    dtTest.Columns.Add("Description", typeof(string));
-                    dtTest.Columns.Add("Price", typeof(decimal));
-
-                    dtTest.Rows.Add(1, "Dịch vụ 1", "Mô tả 1", 100000);
-                    dtTest.Rows.Add(2, "Dịch vụ 2", "Mô tả 2", 200000);
-
-                    dgvServices.DataSource = dtTest;
-
-                    // Định dạng cột
-                    dgvServices.Columns["ServiceID"].HeaderText = "Mã dịch vụ";
-                    dgvServices.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
-                    dgvServices.Columns["Description"].HeaderText = "Mô tả";
-                    dgvServices.Columns["Price"].HeaderText = "Giá";
-                    dgvServices.Columns["Price"].DefaultCellStyle.Format = "N0";
-
-                    MessageBox.Show("Không có dữ liệu trong bảng Services. Đã tạo dữ liệu mẫu để kiểm tra hiển thị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            string sql = "SELECT * FROM Services";
+            DataTable dt = dc.LayDuLieuTuBang(sql);
+            dgvServices.DataSource = dt;
+            dgvServices.Columns["ServiceID"].HeaderText = "Mã dịch vụ";
+            dgvServices.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
+            dgvServices.Columns["Description"].HeaderText = "Mô tả";
+            dgvServices.Columns["Price"].HeaderText = "Giá";
+            dgvServices.Columns["Price"].DefaultCellStyle.Format = "N0";
         }
+
 
         private void ResetForm()
         {
@@ -113,7 +59,6 @@ namespace HomePage
                 return false;
             }
 
-            // Kiểm tra giới hạn giá trị của decimal(10,2)
             if (price > 99999999.99m)
             {
                 MessageBox.Show("Giá trị quá lớn. Giá tối đa cho phép là 99,999,999.99", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -135,7 +80,6 @@ namespace HomePage
 
             try
             {
-                // Chuyển đổi giá trị Price sang decimal để đảm bảo định dạng đúng
                 if (!decimal.TryParse(txtPrice.Text.Trim(), out decimal price))
                 {
                     MessageBox.Show("Giá không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -143,7 +87,6 @@ namespace HomePage
                     return;
                 }
 
-                // Sử dụng cấu trúc SQL cũ
                 string sql = $"INSERT INTO Services (ServiceName, Description, Price) VALUES (N'{txtServiceName.Text.Trim().Replace("'", "''")}', N'{txtDescription.Text.Trim().Replace("'", "''")}', {price.ToString().Replace(",", ".")})";
 
                 int result = dc.ThemSuaXoa(sql);
@@ -189,7 +132,6 @@ namespace HomePage
 
             try
             {
-                // Chuyển đổi giá trị Price sang decimal để đảm bảo định dạng đúng
                 if (!decimal.TryParse(txtPrice.Text.Trim(), out decimal price))
                 {
                     MessageBox.Show("Giá không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -241,7 +183,6 @@ namespace HomePage
 
             try
             {
-                // Kiểm tra xem dịch vụ có đang được sử dụng không
                 string checkSql = $"SELECT COUNT(*) FROM BookingServices WHERE ServiceID = {txtServiceID.Text}";
                 int count = Convert.ToInt32(dc.LayGiaTri(checkSql));
 

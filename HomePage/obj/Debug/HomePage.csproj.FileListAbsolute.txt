@@ -14,8 +14,6 @@ D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan.mdf
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan_log.ldf
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_DanhSachPhong.resources
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_DichVu.resources
-D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan.mdf
-D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan_log.ldf
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\HomePage.exe.config
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\HomePage.exe
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\HomePage.pdb
@@ -30,3 +28,5 @@ D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.csproj.GenerateRes
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.csproj.CoreCompileInputs.cache
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.exe
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.pdb
+D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan.mdf
+D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan_log.ldf

@@ -240,7 +240,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 320);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1312, 60);
+            this.panel3.Size = new System.Drawing.Size(1312, 67);
             this.panel3.TabIndex = 7;
             //
             // label6
@@ -363,27 +363,27 @@
             this.dgvServices.AllowUserToAddRows = false;
             this.dgvServices.AllowUserToDeleteRows = false;
             this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvServices.BackgroundColor = System.Drawing.Color.White;
+            this.dgvServices.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvServices.Location = new System.Drawing.Point(0, 387);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.ReadOnly = true;
+            this.dgvServices.RowTemplate.Height = 24;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServices.Size = new System.Drawing.Size(1312, 690);
-            this.dgvServices.TabIndex = 6;
+            this.dgvServices.Size = new System.Drawing.Size(1312, 303);
+            this.dgvServices.TabIndex = 8;
             this.dgvServices.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellClick);
-            this.dgvServices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServices_CellContentClick);
             //
             // frm_DichVu
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 690);
+            this.Controls.Add(this.dgvServices);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvServices);
             this.Name = "frm_DichVu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý dịch vụ";
@@ -424,7 +424,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvServices;
         private System.Windows.Forms.Button btnLamMoi;
+        private System.Windows.Forms.DataGridView dgvServices;
     }
 }
