@@ -10,38 +10,81 @@ namespace HomePage
 {
     class LOPDUNGCHUNG
     {
+        private readonly string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
         SqlConnection conn;
 
         public LOPDUNGCHUNG()
         {
-            string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
             conn = new SqlConnection(chuoiKn);
-        } 
+        }
+
+        public string GetConnectionString()
+        {
+            return chuoiKn;
+        }
 
         public int ThemSuaXoa(string sql)
         {
-            SqlCommand comm = new SqlCommand(sql, conn);
-            conn.Open();
-            int kq = comm.ExecuteNonQuery();
-            conn.Close();
-            return kq;
-        } 
+            try
+            {
+                SqlCommand comm = new SqlCommand(sql, conn);
+                conn.Open();
+                int kq = comm.ExecuteNonQuery();
+                return kq;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
 
         public object LayGiaTri(string sql)
         {
-            SqlCommand comm = new SqlCommand(sql, conn);
-            conn.Open();
-            object kq = comm.ExecuteScalar();
-            conn.Close();
-            return kq;
+            try
+            {
+                SqlCommand comm = new SqlCommand(sql, conn);
+                conn.Open();
+                object kq = comm.ExecuteScalar();
+                return kq;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
 
         public DataTable LayDuLieuTuBang(string sql)
         {
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-            da.Fill(dt);
-            return dt;
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                // SqlDataAdapter tự động mở và đóng kết nối khi Fill
+                da.Fill(dt);
+                return dt;
+            }
+            finally
+            {
+                // Đảm bảo kết nối đã đóng trong mọi trường hợp
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
         }
     }
 }
