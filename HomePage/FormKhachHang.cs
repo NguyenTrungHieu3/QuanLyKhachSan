@@ -100,7 +100,7 @@ namespace HomePage
             LoadKhachHang();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Tim_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_Timkiem.Text)) {
                 LoadKhachHang();
@@ -109,6 +109,11 @@ namespace HomePage
             
             string sql = $"SELECT * FROM CUSTOMERS WHERE FULLNAME LIKE N'%{txt_Timkiem.Text.Trim()}%'";
             dgv_DanhSachKhachHang.DataSource = lopDungChung.LayDuLieuTuBang(sql);
+        }
+
+        private void grb_ThongTin_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
