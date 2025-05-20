@@ -13,3 +13,4 @@ D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_Main.resourc
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan.mdf
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan_log.ldf
 D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_DanhSachPhong.resources
+D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\obj\Debug\HomePage.frm_DichVu.resources

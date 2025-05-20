@@ -60,5 +60,18 @@ namespace HomePage
             formDanhSachPhong.ShowDialog();
             this.Close();
         }
+
+        private void quảnLýDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mi_DichVu_Click(object sender, EventArgs e)
+        {
+            frm_DichVu fromServices = new frm_DichVu();
+            this.Hide();
+            fromServices.ShowDialog();
+            this.Close();
+        }
     }
 }

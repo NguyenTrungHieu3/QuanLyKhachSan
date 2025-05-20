@@ -99,5 +99,16 @@ namespace HomePage
             }
             LoadKhachHang();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_Timkiem.Text)) {
+                LoadKhachHang();
+                return;
+            }
+            
+            string sql = $"SELECT * FROM CUSTOMERS WHERE FULLNAME LIKE N'%{txt_Timkiem.Text.Trim()}%'";
+            dgv_DanhSachKhachHang.DataSource = lopDungChung.LayDuLieuTuBang(sql);
+        }
     }
 }
