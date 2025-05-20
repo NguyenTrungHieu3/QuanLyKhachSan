@@ -14,9 +14,9 @@ namespace HomePage
 
         public LOPDUNGCHUNG()
         {
-            string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\CS-464-FIS\CSHARP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
+            string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Project\C#\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
             conn = new SqlConnection(chuoiKn);
-        } 
+        }
 
         public int ThemSuaXoa(string sql)
         {
@@ -25,7 +25,7 @@ namespace HomePage
             int kq = comm.ExecuteNonQuery();
             conn.Close();
             return kq;
-        } 
+        }
 
         public object LayGiaTri(string sql)
         {

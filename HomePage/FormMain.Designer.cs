@@ -60,6 +60,7 @@
             this.trảPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mi_KhachHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýDịchVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -396,6 +397,7 @@
             this.ms_ChucNang.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quảnLýPhòngToolStripMenuItem,
             this.quảnLýKháchHàngToolStripMenuItem,
+            this.quảnLýDịchVụToolStripMenuItem,
             this.quảnLýHóaĐơnToolStripMenuItem,
             this.thốngKêToolStripMenuItem});
             this.ms_ChucNang.Location = new System.Drawing.Point(0, 0);
@@ -456,6 +458,13 @@
             this.mi_KhachHang.Size = new System.Drawing.Size(216, 30);
             this.mi_KhachHang.Text = "Khách hàng";
             this.mi_KhachHang.Click += new System.EventHandler(this.mi_KhachHang_Click);
+            // 
+            // quảnLýDịchVụToolStripMenuItem
+            // 
+            this.quảnLýDịchVụToolStripMenuItem.Name = "quảnLýDịchVụToolStripMenuItem";
+            this.quảnLýDịchVụToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.quảnLýDịchVụToolStripMenuItem.Text = "Quản lý dịch vụ";
+            this.quảnLýDịchVụToolStripMenuItem.Click += new System.EventHandler(this.quảnLýDịchVụToolStripMenuItem_Click);
             // 
             // inHóaĐơnToolStripMenuItem
             // 
@@ -568,6 +577,7 @@
         private System.Windows.Forms.ToolStripMenuItem trảPhòngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýKháchHàngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mi_KhachHang;
+        private System.Windows.Forms.ToolStripMenuItem quảnLýDịchVụToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýHóaĐơnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;

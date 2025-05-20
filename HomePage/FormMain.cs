@@ -52,5 +52,14 @@ namespace HomePage
             formKhachHang.ShowDialog();
             this.Close();
         }
+
+        // Thêm phương thức để mở form quản lý dịch vụ
+        private void quảnLýDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Services formServices = new frm_Services();
+            this.Hide();
+            formServices.ShowDialog();
+            this.Close();
+        }
     }
 }
