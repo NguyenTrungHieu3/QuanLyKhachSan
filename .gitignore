@@ -1,27 +1,38 @@
-# Build results
-bin/
-obj/
-
-# Visual Studio files
-.vscode/
 .vs/
-*.user
+# Visual Studio temporary files
+.vs/
 *.suo
-*.userosscache
-*.sln.docstates
-
-# NuGet
-*.nupkg
-packages/
-*.snupkg
-
-# Others
+*.user
 *.log
-*.tmp
+*.docstates
 *.bak
-_ReSharper*/
-*.resharper
+*.scc
 
-# OS Files
-Thumbs.db
-.DS_Store
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# SQL Server LocalDB files
+*.mdf
+*.ldf
+
+# Other common build/temp files for .NET
+*.aps
+*.bsc
+*.map
+*.ilk
+*.obj
+*.pch
+*.pdb
+*.res
+*.sbr
+*.tlb
+*.tlh
+*.tli
+*.tmp
+*.vshost.*
+*.opendb
+*.nupkg
+# Add other ignored files as needed
