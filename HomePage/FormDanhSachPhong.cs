@@ -15,7 +15,7 @@ namespace HomePage
     {
         LOPDUNGCHUNG lopDungChung = new LOPDUNGCHUNG();
 
-        public event EventHandler PhongMoiDuocThem;
+        //public event EventHandler PhongMoiDuocThem;
 
         public frm_DanhSachPhong()
         {

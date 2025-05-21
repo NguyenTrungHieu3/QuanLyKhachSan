@@ -25,13 +25,10 @@ namespace HomePage
         private void frm_QuanLyKhachSan_Load(object sender, EventArgs e)
         {
             mc_NgayThang.Size = new System.Drawing.Size(200, 150);
-<<<<<<< HEAD
-            string sqlLaySoPhongTrong = $"SELECT COUNT(*) FROM ROOMS WHERE STATUSID = '1'";
-            string sqlLaySoPhongDaDat = $"SELECT COUNT(*) FROM ROOMS WHERE STATUSID = '2'";
-=======
+
             string sqlLaySoPhongTrong = $"SELECT COUNT(*) FROM ROOMS WHERE STATUSID = 1";
             string sqlLaySoPhongDaDat = $"SELECT COUNT(*) FROM ROOMS WHERE STATUSID = 2";
->>>>>>> branch-minh-01
+
             int soLuongPhongTrong = (int)lopDungChung.LayGiaTri(sqlLaySoPhongTrong);
             int soLuongPhongDaDat = (int)lopDungChung.LayGiaTri(sqlLaySoPhongDaDat);
             lbl_SoLuongPhongTrong.Text = soLuongPhongTrong.ToString();
@@ -132,11 +129,11 @@ namespace HomePage
             this.Close();
         }
 
-<<<<<<< HEAD
-        private void gb_SoDoPhong_Enter(object sender, EventArgs e)
-=======
+
+        private void gb_SoDoPhong_Enter(object sender, EventArgs e) { }
+
         private void panel1_Paint_1(object sender, PaintEventArgs e)
->>>>>>> branch-minh-01
+
         {
 
         }

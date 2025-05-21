@@ -242,7 +242,7 @@
             // 
             // pn_QuanLyKhachHang
             // 
-<<<<<<< HEAD
+
             this.pn_QuanLyKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.pn_QuanLyKhachHang.Controls.Add(this.lbl_QuanLyKhachHang);
             this.pn_QuanLyKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
@@ -251,17 +251,8 @@
             this.pn_QuanLyKhachHang.Name = "pn_QuanLyKhachHang";
             this.pn_QuanLyKhachHang.Size = new System.Drawing.Size(1312, 74);
             this.pn_QuanLyKhachHang.TabIndex = 73;
-=======
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panel1.Controls.Add(this.lbl_QuanLyKhachHang);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1312, 74);
-            this.panel1.TabIndex = 73;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
->>>>>>> branch-minh-01
+
+
             // 
             // lbl_QuanLyKhachHang
             // 
