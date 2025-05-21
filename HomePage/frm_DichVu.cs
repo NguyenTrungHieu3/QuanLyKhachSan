@@ -221,5 +221,10 @@ namespace HomePage
             string sql = $"SELECT * FROM Services WHERE Price >= {giaMin} AND Price <= {giaMax}";
             dgvServices.DataSource = dc.LayDuLieuTuBang(sql);
         }
+
+        private void frm_DichVu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

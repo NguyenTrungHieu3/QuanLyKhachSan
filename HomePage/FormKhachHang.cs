@@ -110,5 +110,15 @@ namespace HomePage
             string sql = $"SELECT * FROM CUSTOMERS WHERE FULLNAME LIKE N'%{txt_Timkiem.Text.Trim()}%'";
             dgv_DanhSachKhachHang.DataSource = lopDungChung.LayDuLieuTuBang(sql);
         }
+
+        private void grb_ThongTin_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

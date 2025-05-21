@@ -106,6 +106,7 @@
             this.grb_ThongTin.Controls.Add(this.lbl_Email);
             this.grb_ThongTin.Controls.Add(this.lbl_SoDienThoai);
             this.grb_ThongTin.Controls.Add(this.lbl_CCCD);
+            this.grb_ThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grb_ThongTin.Location = new System.Drawing.Point(41, 117);
             this.grb_ThongTin.Margin = new System.Windows.Forms.Padding(4);
             this.grb_ThongTin.Name = "grb_ThongTin";
@@ -114,6 +115,7 @@
             this.grb_ThongTin.TabIndex = 0;
             this.grb_ThongTin.TabStop = false;
             this.grb_ThongTin.Text = "Thông tin";
+            this.grb_ThongTin.Enter += new System.EventHandler(this.grb_ThongTin_Enter);
             // 
             // txt_TenKhachHang
             // 
@@ -232,6 +234,7 @@
             this.dgv_DanhSachKhachHang.MultiSelect = false;
             this.dgv_DanhSachKhachHang.Name = "dgv_DanhSachKhachHang";
             this.dgv_DanhSachKhachHang.ReadOnly = true;
+            this.dgv_DanhSachKhachHang.RowHeadersWidth = 51;
             this.dgv_DanhSachKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DanhSachKhachHang.Size = new System.Drawing.Size(1153, 266);
             this.dgv_DanhSachKhachHang.TabIndex = 70;
@@ -247,6 +250,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1312, 74);
             this.panel1.TabIndex = 73;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lbl_QuanLyKhachHang
             // 
