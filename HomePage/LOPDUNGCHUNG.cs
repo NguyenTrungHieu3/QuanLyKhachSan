@@ -10,34 +10,44 @@ namespace HomePage
 {
     class LOPDUNGCHUNG
     {
+        private readonly string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
         SqlConnection conn;
 
         public LOPDUNGCHUNG()
         {
-            string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Project\C#\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
             conn = new SqlConnection(chuoiKn);
+        }
+
+        public string GetConnectionString()
+        {
+            return chuoiKn;
         }
 
         public int ThemSuaXoa(string sql)
         {
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+
             SqlCommand comm = new SqlCommand(sql, conn);
-            conn.Open();
             int kq = comm.ExecuteNonQuery();
-            conn.Close();
+            conn.Close(); 
             return kq;
         }
 
         public object LayGiaTri(string sql)
         {
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+
             SqlCommand comm = new SqlCommand(sql, conn);
-            conn.Open();
             object kq = comm.ExecuteScalar();
-            conn.Close();
+            conn.Close(); 
             return kq;
         }
 
         public DataTable LayDuLieuTuBang(string sql)
         {
+            
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(sql, conn);
             da.Fill(dt);

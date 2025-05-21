@@ -24,19 +24,14 @@ namespace HomePage
 
         }
 
-        public Boolean checkUserName()
+        public Boolean ValidateForm()
         {
-            if (txt_TenDangNhap.Text == "")
+            if (string.IsNullOrWhiteSpace(txt_TenDangNhap.Text))
             {
                 MessageBox.Show("Tên đang nhập không được để trống");
                 return false;
             }
-            return true;
-        }
-
-        public Boolean checkPassword()
-        {
-            if (txt_MatKhau.Text == "")
+            if (string.IsNullOrWhiteSpace(txt_MatKhau.Text))
             {
                 MessageBox.Show("Mật khẩu không được để trống");
                 return false;
@@ -44,10 +39,9 @@ namespace HomePage
             return true;
         }
 
-
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
-            if (checkUserName() && checkPassword())
+            if (ValidateForm())
             {
                 string sql = $"SELECT * FROM ACCOUNTS WHERE USERNAME = N'{txt_TenDangNhap.Text}' AND PASSWORD = N'{txt_MatKhau.Text}'";
                 DataTable dt = lopDungChung.LayDuLieuTuBang(sql);
@@ -69,6 +63,17 @@ namespace HomePage
         private void txt_MatKhau_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void lnk_DangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frm_DangKy formDangKy = new frm_DangKy();
+            formDangKy.ShowDialog();
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
