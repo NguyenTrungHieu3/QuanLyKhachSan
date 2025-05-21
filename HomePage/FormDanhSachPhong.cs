@@ -46,13 +46,29 @@ namespace HomePage
             cb_TrangThai.ValueMember = "STATUSID";
         }
 
+        public void LoadLoaiPhongTimKiem()
+        {
+            string sql = $"SELECT * FROM ROOMTYPE";
+            cb_LoaiPhongTim.DataSource = lopDungChung.LayDuLieuTuBang(sql);
+            cb_LoaiPhongTim.DisplayMember = "ROOMTYPE";
+            cb_LoaiPhongTim.ValueMember = "ROOMTYPEID";
+        }
+
+        public void LoadTrangThaiPhongTimKiem()
+        {
+            string sql = $"SELECT * FROM STATUS";
+            cb_TrangThaiTim.DataSource = lopDungChung.LayDuLieuTuBang(sql);
+            cb_TrangThaiTim.DisplayMember = "STATUS";
+            cb_TrangThaiTim.ValueMember = "STATUSID";
+        }
+
         private void DanhSachPhong_Load(object sender, EventArgs e)
         {
             LoadLoaiPhong();
             LoadTrangThaiPhong();
-            //cb_TrangThai.SelectedIndex = 0;
-            //cb_LoaiPhong.SelectedIndex = 0;
             LoadDanhSachPhong();
+            LoadLoaiPhongTimKiem();
+            LoadTrangThaiPhongTimKiem();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,61 +78,137 @@ namespace HomePage
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            string sql = $"UPDATE ROOMS SET ROOMNUMBER = '{txt_SoPhong.Text}', ROOMTYPEID = '{cb_LoaiPhong.SelectedValue}', PRICE = '{Double.Parse(txt_GiaTien.Text)}', STATUSID = '{cb_TrangThai.SelectedValue}' WHERE ROOMID = '{txt_MaPhong.Text}'";
-            int kq = lopDungChung.ThemSuaXoa(sql);
-            if (kq > 0)
+            if (!double.TryParse(txt_GiaTien.Text, out double giaTien))
             {
-                MessageBox.Show("Sửa phòng thành công");
+                MessageBox.Show("Giá tiền không hợp lệ. Vui lòng nhập số.");
+                return;
             }
-            else
+
+            try
             {
-                MessageBox.Show("Lỗi sửa phòng");
+                string sql = $"UPDATE ROOMS SET ROOMNUMBER = '{txt_SoPhong.Text}', ROOMTYPEID = '{cb_LoaiPhong.SelectedValue}', PRICE = '{Double.Parse(txt_GiaTien.Text)}', STATUSID = '{cb_TrangThai.SelectedValue}' WHERE ROOMID = '{txt_MaPhong.Text}'";
+                int kq = lopDungChung.ThemSuaXoa(sql);
+                if (kq > 0)
+                {
+                    MessageBox.Show("Sửa phòng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi sửa phòng");
+                }
+                LoadDanhSachPhong();
+                ResetForm();
             }
-            LoadDanhSachPhong();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            string sql = $"INSERT INTO ROOMS(ROOMNUMBER, ROOMTYPEID, PRICE, STATUSID) VALUES('{txt_SoPhong.Text}', '{cb_LoaiPhong.SelectedValue}','{Double.Parse(txt_GiaTien.Text)}', '{cb_TrangThai.SelectedValue}')";
-            int kq = lopDungChung.ThemSuaXoa(sql);
-            if (kq > 0)
+            if (string.IsNullOrWhiteSpace(txt_SoPhong.Text) || string.IsNullOrWhiteSpace(txt_GiaTien.Text))
             {
-                MessageBox.Show("Thêm phòng thành công");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                return;
             }
-            else
+            if (!double.TryParse(txt_GiaTien.Text, out double giaTien))
             {
-                MessageBox.Show("Lỗi thêm phòng");
+                MessageBox.Show("Giá tiền không hợp lệ. Vui lòng nhập số.");
+                return;
             }
-            LoadDanhSachPhong();
+            try
+            {
+                string sql = $"INSERT INTO ROOMS(ROOMNUMBER, ROOMTYPEID, PRICE, STATUSID) VALUES('{txt_SoPhong.Text}', '{cb_LoaiPhong.SelectedValue}','{Double.Parse(txt_GiaTien.Text)}', '{cb_TrangThai.SelectedValue}')";
+                int kq = lopDungChung.ThemSuaXoa(sql);
+                if (kq > 0)
+                {
+                    MessageBox.Show("Thêm phòng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi thêm phòng");
+                }
+                LoadDanhSachPhong();
+                ResetForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            string sql = $"DELETE FROM ROOMS WHERE ROOMID = '{txt_MaPhong.Text}'";
-            int kq = lopDungChung.ThemSuaXoa(sql);
-            if (kq > 0)
+            try
             {
-                MessageBox.Show("Xóa phòng thành công");
-            }   
-            else
-            {
-                MessageBox.Show("Lỗi xóa phòng");
+                string sql = $"DELETE FROM ROOMS WHERE ROOMID = '{txt_MaPhong.Text}'";
+                int kq = lopDungChung.ThemSuaXoa(sql);
+                if (kq > 0)
+                {
+                    MessageBox.Show("Xóa phòng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi xóa phòng");
+                }
+                LoadDanhSachPhong();
+                ResetForm();
             }
-            LoadDanhSachPhong();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
 
         private void dgv_DanhSachPhong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_MaPhong.Text = dgv_DanhSachPhong.CurrentRow.Cells["ROOMID"].Value.ToString();
             txt_SoPhong.Text = dgv_DanhSachPhong.CurrentRow.Cells["ROOMNUMBER"].Value.ToString();
-            cb_LoaiPhong.Text = dgv_DanhSachPhong.CurrentRow.Cells["LOAIPHONg"].Value.ToString();
+            cb_LoaiPhong.Text = dgv_DanhSachPhong.CurrentRow.Cells["LOAIPHONG"].Value.ToString();
             txt_GiaTien.Text = dgv_DanhSachPhong.CurrentRow.Cells["PRICE"].Value.ToString();
             cb_TrangThai.Text = dgv_DanhSachPhong.CurrentRow.Cells["TRANGTHAI"].Value.ToString();
         }
 
         private void btn_Tim_Click(object sender, EventArgs e)
         {
-            if (txt)
+            string soPhong = txt_SoPhongTim.Text.Trim();
+            string loaiPhongID = cb_LoaiPhongTim.SelectedValue?.ToString();
+            string trangThaiID = cb_TrangThaiTim.SelectedValue?.ToString();
+            
+            string sql = @"SELECT R.ROOMID, R.ROOMNUMBER, RT.ROOMTYPE AS LOAIPHONG, 
+                          R.PRICE, S.STATUS AS TRANGTHAI 
+                   FROM ROOMS R 
+                   JOIN ROOMTYPE RT ON R.ROOMTYPEID = RT.ROOMTYPEID 
+                   JOIN STATUS S ON R.STATUSID = S.STATUSID 
+                   WHERE 1=1";
+            
+            if (!string.IsNullOrEmpty(soPhong))
+            {
+                sql += $" AND R.ROOMNUMBER LIKE '%{soPhong}%'";
+            }
+
+            if (!string.IsNullOrEmpty(loaiPhongID))
+            {
+                sql += $" AND R.ROOMTYPEID = '{loaiPhongID}'";
+            }
+
+            if (!string.IsNullOrEmpty(trangThaiID))
+            {
+                sql += $" AND R.STATUSID = '{trangThaiID}'";
+            }
+            
+            dgv_DanhSachPhong.DataSource = lopDungChung.LayDuLieuTuBang(sql);
         }
+
+        void ResetForm()
+        {
+            txt_MaPhong.Clear();
+            txt_SoPhong.Clear();
+            txt_GiaTien.Clear();
+            cb_LoaiPhong.SelectedIndex = 0;
+            cb_TrangThai.SelectedIndex = 0;
+        }
+
     }
 }

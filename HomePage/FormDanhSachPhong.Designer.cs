@@ -36,7 +36,7 @@
             this.txt_MaPhong = new System.Windows.Forms.TextBox();
             this.lbl_MaPhong = new System.Windows.Forms.Label();
             this.txt_GiaTien = new System.Windows.Forms.TextBox();
-            this.txt_Timkiem = new System.Windows.Forms.TextBox();
+            this.txt_SoPhongTim = new System.Windows.Forms.TextBox();
             this.txt_SoPhong = new System.Windows.Forms.TextBox();
             this.lbl_LoaiPhong = new System.Windows.Forms.Label();
             this.lbl_SoPhong = new System.Windows.Forms.Label();
@@ -48,6 +48,11 @@
             this.lbl_TrangThai = new System.Windows.Forms.Label();
             this.lbl_GiaTien = new System.Windows.Forms.Label();
             this.btn_Them = new System.Windows.Forms.Button();
+            this.lbl_SoPhongTim = new System.Windows.Forms.Label();
+            this.lbl_LoaiPhongTim = new System.Windows.Forms.Label();
+            this.lbl_TrangThaiTim = new System.Windows.Forms.Label();
+            this.cb_LoaiPhongTim = new System.Windows.Forms.ComboBox();
+            this.cb_TrangThaiTim = new System.Windows.Forms.ComboBox();
             this.pn_QuanLyPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachPhong)).BeginInit();
             this.grb_ThongTin.SuspendLayout();
@@ -59,7 +64,7 @@
             this.btn_Tim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Tim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btn_Tim.ForeColor = System.Drawing.Color.White;
-            this.btn_Tim.Location = new System.Drawing.Point(482, 363);
+            this.btn_Tim.Location = new System.Drawing.Point(488, 354);
             this.btn_Tim.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Tim.Name = "btn_Tim";
             this.btn_Tim.Size = new System.Drawing.Size(76, 29);
@@ -96,12 +101,12 @@
             this.lbl_TimKiem.AutoSize = true;
             this.lbl_TimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_TimKiem.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbl_TimKiem.Location = new System.Drawing.Point(101, 363);
+            this.lbl_TimKiem.Location = new System.Drawing.Point(71, 352);
             this.lbl_TimKiem.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TimKiem.Name = "lbl_TimKiem";
-            this.lbl_TimKiem.Size = new System.Drawing.Size(92, 24);
+            this.lbl_TimKiem.Size = new System.Drawing.Size(87, 24);
             this.lbl_TimKiem.TabIndex = 81;
-            this.lbl_TimKiem.Text = "Tìm kiếm:";
+            this.lbl_TimKiem.Text = "Tìm kiếm";
             // 
             // dgv_DanhSachPhong
             // 
@@ -109,13 +114,13 @@
             this.dgv_DanhSachPhong.AllowUserToDeleteRows = false;
             this.dgv_DanhSachPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_DanhSachPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DanhSachPhong.Location = new System.Drawing.Point(75, 428);
+            this.dgv_DanhSachPhong.Location = new System.Drawing.Point(75, 486);
             this.dgv_DanhSachPhong.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_DanhSachPhong.MultiSelect = false;
             this.dgv_DanhSachPhong.Name = "dgv_DanhSachPhong";
             this.dgv_DanhSachPhong.ReadOnly = true;
             this.dgv_DanhSachPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_DanhSachPhong.Size = new System.Drawing.Size(1153, 295);
+            this.dgv_DanhSachPhong.Size = new System.Drawing.Size(1153, 237);
             this.dgv_DanhSachPhong.TabIndex = 80;
             this.dgv_DanhSachPhong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachPhong_CellClick);
             // 
@@ -150,14 +155,14 @@
             this.txt_GiaTien.Size = new System.Drawing.Size(289, 29);
             this.txt_GiaTien.TabIndex = 4;
             // 
-            // txt_Timkiem
+            // txt_SoPhongTim
             // 
-            this.txt_Timkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txt_Timkiem.Location = new System.Drawing.Point(214, 363);
-            this.txt_Timkiem.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_Timkiem.Name = "txt_Timkiem";
-            this.txt_Timkiem.Size = new System.Drawing.Size(247, 29);
-            this.txt_Timkiem.TabIndex = 76;
+            this.txt_SoPhongTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txt_SoPhongTim.Location = new System.Drawing.Point(297, 352);
+            this.txt_SoPhongTim.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_SoPhongTim.Name = "txt_SoPhongTim";
+            this.txt_SoPhongTim.Size = new System.Drawing.Size(171, 29);
+            this.txt_SoPhongTim.TabIndex = 76;
             // 
             // txt_SoPhong
             // 
@@ -308,16 +313,83 @@
             this.btn_Them.UseVisualStyleBackColor = false;
             this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
+            // lbl_SoPhongTim
+            // 
+            this.lbl_SoPhongTim.AutoSize = true;
+            this.lbl_SoPhongTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_SoPhongTim.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lbl_SoPhongTim.Location = new System.Drawing.Point(179, 352);
+            this.lbl_SoPhongTim.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_SoPhongTim.Name = "lbl_SoPhongTim";
+            this.lbl_SoPhongTim.Size = new System.Drawing.Size(93, 24);
+            this.lbl_SoPhongTim.TabIndex = 86;
+            this.lbl_SoPhongTim.Text = "Số phòng";
+            // 
+            // lbl_LoaiPhongTim
+            // 
+            this.lbl_LoaiPhongTim.AutoSize = true;
+            this.lbl_LoaiPhongTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_LoaiPhongTim.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lbl_LoaiPhongTim.Location = new System.Drawing.Point(179, 389);
+            this.lbl_LoaiPhongTim.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LoaiPhongTim.Name = "lbl_LoaiPhongTim";
+            this.lbl_LoaiPhongTim.Size = new System.Drawing.Size(110, 24);
+            this.lbl_LoaiPhongTim.TabIndex = 87;
+            this.lbl_LoaiPhongTim.Text = "Loại phòng:";
+            // 
+            // lbl_TrangThaiTim
+            // 
+            this.lbl_TrangThaiTim.AutoSize = true;
+            this.lbl_TrangThaiTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_TrangThaiTim.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lbl_TrangThaiTim.Location = new System.Drawing.Point(179, 426);
+            this.lbl_TrangThaiTim.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TrangThaiTim.Name = "lbl_TrangThaiTim";
+            this.lbl_TrangThaiTim.Size = new System.Drawing.Size(99, 24);
+            this.lbl_TrangThaiTim.TabIndex = 88;
+            this.lbl_TrangThaiTim.Text = "Trạng thái:";
+            // 
+            // cb_LoaiPhongTim
+            // 
+            this.cb_LoaiPhongTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cb_LoaiPhongTim.FormattingEnabled = true;
+            this.cb_LoaiPhongTim.Items.AddRange(new object[] {
+            "Phòng đơn",
+            "Phòng đôi",
+            "Phòng gia đình"});
+            this.cb_LoaiPhongTim.Location = new System.Drawing.Point(296, 390);
+            this.cb_LoaiPhongTim.Name = "cb_LoaiPhongTim";
+            this.cb_LoaiPhongTim.Size = new System.Drawing.Size(171, 30);
+            this.cb_LoaiPhongTim.TabIndex = 63;
+            // 
+            // cb_TrangThaiTim
+            // 
+            this.cb_TrangThaiTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cb_TrangThaiTim.FormattingEnabled = true;
+            this.cb_TrangThaiTim.Items.AddRange(new object[] {
+            "Phòng đơn",
+            "Phòng đôi",
+            "Phòng gia đình"});
+            this.cb_TrangThaiTim.Location = new System.Drawing.Point(297, 426);
+            this.cb_TrangThaiTim.Name = "cb_TrangThaiTim";
+            this.cb_TrangThaiTim.Size = new System.Drawing.Size(171, 30);
+            this.cb_TrangThaiTim.TabIndex = 89;
+            // 
             // frm_DanhSachPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 690);
+            this.Controls.Add(this.cb_TrangThaiTim);
+            this.Controls.Add(this.cb_LoaiPhongTim);
+            this.Controls.Add(this.lbl_TrangThaiTim);
+            this.Controls.Add(this.lbl_LoaiPhongTim);
+            this.Controls.Add(this.lbl_SoPhongTim);
             this.Controls.Add(this.btn_Tim);
             this.Controls.Add(this.pn_QuanLyPhong);
             this.Controls.Add(this.lbl_TimKiem);
             this.Controls.Add(this.dgv_DanhSachPhong);
-            this.Controls.Add(this.txt_Timkiem);
+            this.Controls.Add(this.txt_SoPhongTim);
             this.Controls.Add(this.btn_Xoa);
             this.Controls.Add(this.btn_Sua);
             this.Controls.Add(this.grb_ThongTin);
@@ -346,7 +418,7 @@
         private System.Windows.Forms.TextBox txt_MaPhong;
         private System.Windows.Forms.Label lbl_MaPhong;
         private System.Windows.Forms.TextBox txt_GiaTien;
-        private System.Windows.Forms.TextBox txt_Timkiem;
+        private System.Windows.Forms.TextBox txt_SoPhongTim;
         private System.Windows.Forms.TextBox txt_SoPhong;
         private System.Windows.Forms.Label lbl_LoaiPhong;
         private System.Windows.Forms.Label lbl_SoPhong;
@@ -358,5 +430,10 @@
         private System.Windows.Forms.Label lbl_TrangThai;
         private System.Windows.Forms.ComboBox cb_TrangThai;
         private System.Windows.Forms.ComboBox cb_LoaiPhong;
+        private System.Windows.Forms.Label lbl_SoPhongTim;
+        private System.Windows.Forms.Label lbl_LoaiPhongTim;
+        private System.Windows.Forms.Label lbl_TrangThaiTim;
+        private System.Windows.Forms.ComboBox cb_LoaiPhongTim;
+        private System.Windows.Forms.ComboBox cb_TrangThaiTim;
     }
 }

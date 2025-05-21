@@ -25,17 +25,30 @@ namespace HomePage
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            string sql = $"INSERT INTO CUSTOMERS(FULLNAME, CCCD_PASSPORT, PHONE, EMAIL) VALUES(N'{txt_TenKhachHang.Text}', '{txt_CCCD.Text}', '{txt_SoDienThoai.Text}', '{txt_Email.Text}')";
-            int kq = lopDungChung.ThemSuaXoa(sql);
-            if (kq >= 1)
+            if (string.IsNullOrWhiteSpace(txt_TenKhachHang.Text))
             {
-                MessageBox.Show("Thêm khách hàng thành công");
+                MessageBox.Show("Vui lòng nhập tên khách hàng.");
+                return;
             }
-            else
+            try
             {
-                MessageBox.Show("Lỗi thêm khách hàng");
+                string sql = $"INSERT INTO CUSTOMERS(FULLNAME, CCCD_PASSPORT, PHONE, EMAIL) VALUES(N'{txt_TenKhachHang.Text}', '{txt_CCCD.Text}', '{txt_SoDienThoai.Text}', '{txt_Email.Text}')";
+                int kq = lopDungChung.ThemSuaXoa(sql);
+                if (kq >= 1)
+                {
+                    MessageBox.Show("Thêm khách hàng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi thêm khách hàng");
+                }
+                LoadKhachHang();
+                ClearForm();
             }
-            LoadKhachHang();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
+            }
         }
 
         private void lbl_SoDienThoai_Click(object sender, EventArgs e)
@@ -62,18 +75,32 @@ namespace HomePage
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            string maKhachHang = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
-            string sql = $"UPDATE CUSTOMERS SET FULLNAME = N'{txt_TenKhachHang.Text}', CCCD_PASSPORT = '{txt_CCCD.Text}', PHONE = '{txt_SoDienThoai.Text}', EMAIL = '{txt_Email.Text}' WHERE CUSTOMERID = '{maKhachHang}'";
-            int kq = lopDungChung.ThemSuaXoa(sql);
-            if (kq >= 1)
+            if (string.IsNullOrWhiteSpace(txt_TenKhachHang.Text))
             {
-                MessageBox.Show("Sửa khách hàng thành công");
+                MessageBox.Show("Vui lòng nhập tên khách hàng.");
+                return;
             }
-            else
+            try
             {
-                MessageBox.Show("Lỗi sửa khách hàng");
+                string maKhachHang = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
+                string sql = $"UPDATE CUSTOMERS SET FULLNAME = N'{txt_TenKhachHang.Text}', CCCD_PASSPORT = '{txt_CCCD.Text}', PHONE = '{txt_SoDienThoai.Text}', EMAIL = '{txt_Email.Text}' WHERE CUSTOMERID = '{maKhachHang}'";
+                int kq = lopDungChung.ThemSuaXoa(sql);
+                if (kq >= 1)
+                {
+                    MessageBox.Show("Sửa khách hàng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi sửa khách hàng");
+                }
+                LoadKhachHang();
+                ClearForm();
             }
-            LoadKhachHang();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
+            }
+
         }
 
         private void dgv_DanhSachKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -86,18 +113,27 @@ namespace HomePage
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            string maKhachHang = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
-            string sql = $"DELETE FROM CUSTOMERS WHERE CUSTOMERID = '{maKhachHang}'";
-            int kq = lopDungChung.ThemSuaXoa(sql);
-            if (kq >= 1)
+            try
             {
-                MessageBox.Show("Xóa khách hàng thành công");
+                string maKhachHang = dgv_DanhSachKhachHang.CurrentRow.Cells["CUSTOMERID"].Value.ToString();
+                string sql = $"DELETE FROM CUSTOMERS WHERE CUSTOMERID = '{maKhachHang}'";
+                int kq = lopDungChung.ThemSuaXoa(sql);
+                if (kq >= 1)
+                {
+                    MessageBox.Show("Xóa khách hàng thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi xóa khách hàng");
+                }
+                LoadKhachHang();
+                ClearForm();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi xóa khách hàng");
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
             }
-            LoadKhachHang();
+
         }
 
         private void btn_Tim_Click(object sender, EventArgs e)
@@ -115,5 +151,15 @@ namespace HomePage
         {
 
         }
+
+        void ClearForm()
+        {
+            txt_TenKhachHang.Clear();
+            txt_CCCD.Clear();
+            txt_SoDienThoai.Clear();
+            txt_Email.Clear();
+            txt_Timkiem.Clear();
+        }
+
     }
 }

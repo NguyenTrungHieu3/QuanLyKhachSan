@@ -18,8 +18,8 @@ namespace HomePage
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frm_DichVu());
             //Application.Run(new frm_Login());
-            //Application.Run(new frm_Main());
-            Application.Run(new frm_DanhSachPhong());
+            Application.Run(new frm_Main());
+            //Application.Run(new frm_DanhSachPhong());
         }
     }
 }
