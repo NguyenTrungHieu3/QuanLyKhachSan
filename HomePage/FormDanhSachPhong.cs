@@ -14,6 +14,9 @@ namespace HomePage
     public partial class frm_DanhSachPhong : Form
     {
         LOPDUNGCHUNG lopDungChung = new LOPDUNGCHUNG();
+
+        public event EventHandler PhongMoiDuocThem;
+
         public frm_DanhSachPhong()
         {
             InitializeComponent();

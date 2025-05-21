@@ -152,6 +152,7 @@ namespace HomePage
 
         }
 
+<<<<<<< HEAD
         void ClearForm()
         {
             txt_TenKhachHang.Clear();
@@ -161,5 +162,11 @@ namespace HomePage
             txt_Timkiem.Clear();
         }
 
+=======
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+>>>>>>> branch-minh-01
     }
 }

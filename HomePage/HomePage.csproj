@@ -86,6 +86,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_DatPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DatPhong.Designer.cs">
+      <DependentUpon>frm_DatPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_DichVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_DatPhong.resx">
+      <DependentUpon>frm_DatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_DichVu.resx">
       <DependentUpon>frm_DichVu.cs</DependentUpon>

@@ -106,6 +106,7 @@
             this.grb_ThongTin.Controls.Add(this.lbl_Email);
             this.grb_ThongTin.Controls.Add(this.lbl_SoDienThoai);
             this.grb_ThongTin.Controls.Add(this.lbl_CCCD);
+            this.grb_ThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grb_ThongTin.Location = new System.Drawing.Point(41, 117);
             this.grb_ThongTin.Margin = new System.Windows.Forms.Padding(4);
             this.grb_ThongTin.Name = "grb_ThongTin";
@@ -233,6 +234,7 @@
             this.dgv_DanhSachKhachHang.MultiSelect = false;
             this.dgv_DanhSachKhachHang.Name = "dgv_DanhSachKhachHang";
             this.dgv_DanhSachKhachHang.ReadOnly = true;
+            this.dgv_DanhSachKhachHang.RowHeadersWidth = 51;
             this.dgv_DanhSachKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DanhSachKhachHang.Size = new System.Drawing.Size(1153, 266);
             this.dgv_DanhSachKhachHang.TabIndex = 70;
@@ -240,6 +242,7 @@
             // 
             // pn_QuanLyKhachHang
             // 
+<<<<<<< HEAD
             this.pn_QuanLyKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.pn_QuanLyKhachHang.Controls.Add(this.lbl_QuanLyKhachHang);
             this.pn_QuanLyKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
@@ -248,6 +251,17 @@
             this.pn_QuanLyKhachHang.Name = "pn_QuanLyKhachHang";
             this.pn_QuanLyKhachHang.Size = new System.Drawing.Size(1312, 74);
             this.pn_QuanLyKhachHang.TabIndex = 73;
+=======
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.panel1.Controls.Add(this.lbl_QuanLyKhachHang);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1312, 74);
+            this.panel1.TabIndex = 73;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+>>>>>>> branch-minh-01
             // 
             // lbl_QuanLyKhachHang
             // 

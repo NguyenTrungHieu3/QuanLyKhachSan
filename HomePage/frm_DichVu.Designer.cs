@@ -364,6 +364,7 @@
             this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.ReadOnly = true;
+            this.dgvServices.RowHeadersWidth = 51;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvServices.Size = new System.Drawing.Size(1312, 690);
             this.dgvServices.TabIndex = 6;
@@ -380,6 +381,7 @@
             this.Name = "frm_DichVu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_Services";
+            this.Load += new System.EventHandler(this.frm_DichVu_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
