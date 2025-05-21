@@ -70,5 +70,16 @@ namespace HomePage
         {
 
         }
+
+        private void lnk_DangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+             FormDangKy  formDangKy = new FormDangKy();
+            formDangKy.ShowDialog();
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

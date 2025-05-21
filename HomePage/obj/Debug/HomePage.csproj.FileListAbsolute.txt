@@ -30,3 +30,4 @@ D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.exe
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.pdb
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan.mdf
 D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\bin\Debug\QuanLyKhachSan_log.ldf
+D:\C#\OnTap\DANHOM\QuanLyKhachSan\HomePage\obj\Debug\HomePage.FormDangKy.resources
