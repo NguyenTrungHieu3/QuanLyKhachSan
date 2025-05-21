@@ -18,6 +18,12 @@ namespace HomePage
         private int selectedRoomTypeID;
         private string selectedRoomNumber;
         private bool isFromMain = false;
+
+        public frm_DatPhong()
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
         public frm_DatPhong(int roomId, int roomTypeId, string roomNumber, bool fromMain = false)
         {
             InitializeComponent();
@@ -381,5 +387,9 @@ namespace HomePage
 
         }
 
+        private void btn_Huy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

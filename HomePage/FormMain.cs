@@ -73,7 +73,7 @@ namespace HomePage
                         if(status == "1")
                         {
                             frm_DatPhong datPhong = new frm_DatPhong(roomID, roomTypeID, roomNumber, true);
-                            datPhong.Show();
+                            datPhong.ShowDialog();
                         }
                         else
                         {
@@ -87,7 +87,9 @@ namespace HomePage
         }
         private void đặtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frm_DatPhong formDatPhong = new frm_DatPhong();
+            formDatPhong.ShowDialog();
+            this.Close();
         }
 
         private void mc_NgayThang_DateChanged(object sender, DateRangeEventArgs e)

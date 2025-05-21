@@ -430,6 +430,7 @@
             this.btn_Huy.TabIndex = 78;
             this.btn_Huy.Text = "HỦY";
             this.btn_Huy.UseVisualStyleBackColor = false;
+            this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
             // 
             // frm_DatPhong
             // 
