@@ -22,8 +22,8 @@ namespace HomePage
         private void frm_QuanLyKhachSan_Load(object sender, EventArgs e)
         {
             mc_NgayThang.Size = new System.Drawing.Size(200, 150);
-            string sqlLaySoPhongTrong = $"SELECT COUNT(*) FROM ROOMS WHERE STATUS = 'available'";
-            string sqlLaySoPhongDaDat = $"SELECT COUNT(*) FROM ROOMS WHERE STATUS = 'booked'";
+            string sqlLaySoPhongTrong = $"SELECT COUNT(*) FROM ROOMS WHERE STATUSID = '1'";
+            string sqlLaySoPhongDaDat = $"SELECT COUNT(*) FROM ROOMS WHERE STATUSID = '2'";
             int soLuongPhongTrong = (int)lopDungChung.LayGiaTri(sqlLaySoPhongTrong);
             int soLuongPhongDaDat = (int)lopDungChung.LayGiaTri(sqlLaySoPhongDaDat);
             lbl_SoLuongPhongTrong.Text = soLuongPhongTrong.ToString();
@@ -72,6 +72,11 @@ namespace HomePage
             this.Hide();
             fromServices.ShowDialog();
             this.Close();
+        }
+
+        private void gb_SoDoPhong_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

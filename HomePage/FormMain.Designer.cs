@@ -166,6 +166,7 @@
             this.gb_SoDoPhong.TabIndex = 4;
             this.gb_SoDoPhong.TabStop = false;
             this.gb_SoDoPhong.Text = " SƠ ĐỒ PHÒNG ";
+            this.gb_SoDoPhong.Enter += new System.EventHandler(this.gb_SoDoPhong_Enter);
             // 
             // panel1
             // 
@@ -475,14 +476,14 @@
             // mi_KhachHang
             // 
             this.mi_KhachHang.Name = "mi_KhachHang";
-            this.mi_KhachHang.Size = new System.Drawing.Size(216, 30);
+            this.mi_KhachHang.Size = new System.Drawing.Size(191, 30);
             this.mi_KhachHang.Text = "Khách hàng";
             this.mi_KhachHang.Click += new System.EventHandler(this.mi_KhachHang_Click);
             // 
             // inHóaĐơnToolStripMenuItem
             // 
             this.inHóaĐơnToolStripMenuItem.Name = "inHóaĐơnToolStripMenuItem";
-            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(216, 30);
+            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(191, 30);
             this.inHóaĐơnToolStripMenuItem.Text = "In hóa đơn";
             // 
             // quảnLýHóaĐơnToolStripMenuItem
