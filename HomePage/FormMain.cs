@@ -38,7 +38,7 @@ namespace HomePage
         public void LoadSDPhong()
         {
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Lap_Trinh_Ung_Dung_NET\BaiGROUP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True"; ;
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\CS-464-FIS\CSHARP\Lesson03-Winforms\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True"; ;
             string query = "SELECT RoomID ,  RoomNumber,ROOMTYPEID , STATUSID FROM Rooms";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
