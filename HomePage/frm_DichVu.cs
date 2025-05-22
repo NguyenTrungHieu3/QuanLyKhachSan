@@ -1,41 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace HomePage
 {
     public partial class frm_DichVu : Form
     {
         LOPDUNGCHUNG dc = new LOPDUNGCHUNG();
+        private void frm_DichVu_Load(object sender, EventArgs e)
+        {
+
+            LoadDataServices();
+            ResetForm();
+        }
 
         public frm_DichVu()
         {
             InitializeComponent();
         }
 
-        private void frm_Services_Load(object sender, EventArgs e)
-        {
-            LoadDataServices();
-            ResetForm();
-        }
 
         private void LoadDataServices()
         {
             string sql = "SELECT * FROM Services";
-            dgvServices.DataSource = dc.LayDuLieuTuBang(sql);
+            DataTable dt = dc.LayDuLieuTuBang(sql);
+            dgvServices.DataSource = dt;
             dgvServices.Columns["ServiceID"].HeaderText = "Mã dịch vụ";
             dgvServices.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
             dgvServices.Columns["Description"].HeaderText = "Mô tả";
             dgvServices.Columns["Price"].HeaderText = "Giá";
             dgvServices.Columns["Price"].DefaultCellStyle.Format = "N0";
         }
+
 
         private void ResetForm()
         {
@@ -55,10 +52,16 @@ namespace HomePage
                 return false;
             }
 
-            decimal price;
-            if (!decimal.TryParse(txtPrice.Text, out price) || price < 0)
+            if (!decimal.TryParse(txtPrice.Text, out decimal price) || price < 0)
             {
                 MessageBox.Show("Vui lòng nhập giá hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPrice.Focus();
+                return false;
+            }
+
+            if (price > 99999999.99m)
+            {
+                MessageBox.Show("Giá trị quá lớn. Giá tối đa cho phép là 99,999,999.99", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrice.Focus();
                 return false;
             }
@@ -77,9 +80,18 @@ namespace HomePage
 
             try
             {
-                string sql = $"INSERT INTO Services (ServiceName, Description, Price) VALUES (N'{txtServiceName.Text.Trim()}', N'{txtDescription.Text.Trim()}', {txtPrice.Text.Trim().Replace(",", ".")})";
+                if (!decimal.TryParse(txtPrice.Text.Trim(), out decimal price))
+                {
+                    MessageBox.Show("Giá không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPrice.Focus();
+                    return;
+                }
 
-                if (dc.ThemSuaXoa(sql) > 0)
+                string sql = $"INSERT INTO Services (ServiceName, Description, Price) VALUES (N'{txtServiceName.Text.Trim().Replace("'", "''")}', N'{txtDescription.Text.Trim().Replace("'", "''")}', {price.ToString().Replace(",", ".")})";
+
+                int result = dc.ThemSuaXoa(sql);
+
+                if (result > 0)
                 {
                     MessageBox.Show("Thêm dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDataServices();
@@ -88,6 +100,18 @@ namespace HomePage
                 else
                 {
                     MessageBox.Show("Thêm dịch vụ thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                if (ex.Message.Contains("Arithmetic overflow"))
+                {
+                    MessageBox.Show("Giá trị quá lớn cho cột Price. Giá tối đa cho phép là 99,999,999.99", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrice.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi SQL: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -108,9 +132,19 @@ namespace HomePage
 
             try
             {
-                string sql = $"UPDATE Services SET ServiceName = N'{txtServiceName.Text.Trim()}', Description = N'{txtDescription.Text.Trim()}', Price = {txtPrice.Text.Trim().Replace(",", ".")} WHERE ServiceID = {txtServiceID.Text}";
+                if (!decimal.TryParse(txtPrice.Text.Trim(), out decimal price))
+                {
+                    MessageBox.Show("Giá không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPrice.Focus();
+                    return;
+                }
 
-                if (dc.ThemSuaXoa(sql) > 0)
+                // Sử dụng cấu trúc SQL cũ
+                string sql = $"UPDATE Services SET ServiceName = N'{txtServiceName.Text.Trim().Replace("'", "''")}', Description = N'{txtDescription.Text.Trim().Replace("'", "''")}', Price = {price.ToString().Replace(",", ".")} WHERE ServiceID = {txtServiceID.Text}";
+
+                int result = dc.ThemSuaXoa(sql);
+
+                if (result > 0)
                 {
                     MessageBox.Show("Cập nhật dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDataServices();
@@ -119,6 +153,18 @@ namespace HomePage
                 else
                 {
                     MessageBox.Show("Cập nhật dịch vụ thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                if (ex.Message.Contains("Arithmetic overflow"))
+                {
+                    MessageBox.Show("Giá trị quá lớn cho cột Price. Giá tối đa cho phép là 99,999,999.99", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrice.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi SQL: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -135,23 +181,25 @@ namespace HomePage
                 return;
             }
 
-            // Kiểm tra xem dịch vụ có đang được sử dụng không
-            string checkSql = $"SELECT COUNT(*) FROM BookingServices WHERE ServiceID = {txtServiceID.Text}";
-            int count = Convert.ToInt32(dc.LayGiaTri(checkSql));
-            if (count > 0)
+            try
             {
-                MessageBox.Show("Không thể xóa dịch vụ này vì đang được sử dụng trong đặt phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                string checkSql = $"SELECT COUNT(*) FROM BookingServices WHERE ServiceID = {txtServiceID.Text}";
+                int count = Convert.ToInt32(dc.LayGiaTri(checkSql));
 
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa dịch vụ này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                try
+                if (count > 0)
+                {
+                    MessageBox.Show("Không thể xóa dịch vụ này vì đang được sử dụng trong đặt phòng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa dịch vụ này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
                     string sql = $"DELETE FROM Services WHERE ServiceID = {txtServiceID.Text}";
 
-                    if (dc.ThemSuaXoa(sql) > 0)
+                    int deleteResult = dc.ThemSuaXoa(sql);
+
+                    if (deleteResult > 0)
                     {
                         MessageBox.Show("Xóa dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDataServices();
@@ -162,10 +210,14 @@ namespace HomePage
                         MessageBox.Show("Xóa dịch vụ thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show("Lỗi SQL: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -183,43 +235,71 @@ namespace HomePage
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTimKiem.Text))
+            try
             {
-                LoadDataServices();
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(txtTimKiem.Text))
+                {
+                    LoadDataServices();
+                    return;
+                }
 
-            string sql = $"SELECT * FROM Services WHERE ServiceName LIKE N'%{txtTimKiem.Text.Trim()}%'";
-            dgvServices.DataSource = dc.LayDuLieuTuBang(sql);
+                string sql = $"SELECT * FROM Services WHERE ServiceName LIKE N'%{txtTimKiem.Text.Trim().Replace("'", "''")}%'";
+                dgvServices.DataSource = dc.LayDuLieuTuBang(sql);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tìm kiếm: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLoc_Click(object sender, EventArgs e)
         {
-            decimal giaMin = 0;
-            decimal giaMax = decimal.MaxValue;
-
-            if (!string.IsNullOrWhiteSpace(txtGiaMin.Text))
+            try
             {
-                if (!decimal.TryParse(txtGiaMin.Text, out giaMin))
+                decimal giaMin = 0;
+                decimal giaMax = decimal.MaxValue;
+
+                if (!string.IsNullOrWhiteSpace(txtGiaMin.Text))
                 {
-                    MessageBox.Show("Giá tối thiểu không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtGiaMin.Focus();
+                    if (!decimal.TryParse(txtGiaMin.Text, out giaMin))
+                    {
+                        MessageBox.Show("Giá tối thiểu không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtGiaMin.Focus();
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtGiaMax.Text))
+                {
+                    if (!decimal.TryParse(txtGiaMax.Text, out giaMax))
+                    {
+                        MessageBox.Show("Giá tối đa không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtGiaMax.Focus();
+                        return;
+                    }
+                }
+
+                // Kiểm tra giới hạn giá trị
+                if (giaMin > 99999999.99m || giaMax > 99999999.99m)
+                {
+                    MessageBox.Show("Giá trị quá lớn. Giá tối đa cho phép là 99,999,999.99", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-            }
 
-            if (!string.IsNullOrWhiteSpace(txtGiaMax.Text))
+                string sql = $"SELECT * FROM Services WHERE Price >= {giaMin.ToString().Replace(",", ".")} AND Price <= {giaMax.ToString().Replace(",", ".")}";
+                dgvServices.DataSource = dc.LayDuLieuTuBang(sql);
+            }
+            catch (Exception ex)
             {
-                if (!decimal.TryParse(txtGiaMax.Text, out giaMax))
-                {
-                    MessageBox.Show("Giá tối đa không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtGiaMax.Focus();
-                    return;
-                }
+                MessageBox.Show("Lỗi lọc dữ liệu: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            string sql = $"SELECT * FROM Services WHERE Price >= {giaMin} AND Price <= {giaMax}";
-            dgvServices.DataSource = dc.LayDuLieuTuBang(sql);
         }
+
+        private void dgvServices_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
     }
 }

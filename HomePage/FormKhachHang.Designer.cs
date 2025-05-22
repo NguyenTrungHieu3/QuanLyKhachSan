@@ -43,12 +43,12 @@
             this.txt_Timkiem = new System.Windows.Forms.TextBox();
             this.lbl_TimKiem = new System.Windows.Forms.Label();
             this.dgv_DanhSachKhachHang = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pn_QuanLyKhachHang = new System.Windows.Forms.Panel();
             this.lbl_QuanLyKhachHang = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Tim = new System.Windows.Forms.Button();
             this.grb_ThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachKhachHang)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pn_QuanLyKhachHang.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Them
@@ -106,6 +106,7 @@
             this.grb_ThongTin.Controls.Add(this.lbl_Email);
             this.grb_ThongTin.Controls.Add(this.lbl_SoDienThoai);
             this.grb_ThongTin.Controls.Add(this.lbl_CCCD);
+            this.grb_ThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grb_ThongTin.Location = new System.Drawing.Point(41, 117);
             this.grb_ThongTin.Margin = new System.Windows.Forms.Padding(4);
             this.grb_ThongTin.Name = "grb_ThongTin";
@@ -114,6 +115,7 @@
             this.grb_ThongTin.TabIndex = 0;
             this.grb_ThongTin.TabStop = false;
             this.grb_ThongTin.Text = "Thông tin";
+            this.grb_ThongTin.Enter += new System.EventHandler(this.grb_ThongTin_Enter);
             // 
             // txt_TenKhachHang
             // 
@@ -232,21 +234,25 @@
             this.dgv_DanhSachKhachHang.MultiSelect = false;
             this.dgv_DanhSachKhachHang.Name = "dgv_DanhSachKhachHang";
             this.dgv_DanhSachKhachHang.ReadOnly = true;
+            this.dgv_DanhSachKhachHang.RowHeadersWidth = 51;
             this.dgv_DanhSachKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DanhSachKhachHang.Size = new System.Drawing.Size(1153, 266);
             this.dgv_DanhSachKhachHang.TabIndex = 70;
             this.dgv_DanhSachKhachHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSachKhachHang_CellClick);
             // 
-            // panel1
+            // pn_QuanLyKhachHang
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.panel1.Controls.Add(this.lbl_QuanLyKhachHang);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1312, 74);
-            this.panel1.TabIndex = 73;
+
+            this.pn_QuanLyKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.pn_QuanLyKhachHang.Controls.Add(this.lbl_QuanLyKhachHang);
+            this.pn_QuanLyKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pn_QuanLyKhachHang.Location = new System.Drawing.Point(0, 0);
+            this.pn_QuanLyKhachHang.Margin = new System.Windows.Forms.Padding(4);
+            this.pn_QuanLyKhachHang.Name = "pn_QuanLyKhachHang";
+            this.pn_QuanLyKhachHang.Size = new System.Drawing.Size(1312, 74);
+            this.pn_QuanLyKhachHang.TabIndex = 73;
+
+
             // 
             // lbl_QuanLyKhachHang
             // 
@@ -260,28 +266,28 @@
             this.lbl_QuanLyKhachHang.TabIndex = 0;
             this.lbl_QuanLyKhachHang.Text = "QUẢN LÝ KHÁCH HÀNG";
             // 
-            // button1
+            // btn_Tim
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(448, 316);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 29);
-            this.button1.TabIndex = 74;
-            this.button1.Text = "Tìm";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Tim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btn_Tim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Tim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btn_Tim.ForeColor = System.Drawing.Color.White;
+            this.btn_Tim.Location = new System.Drawing.Point(448, 316);
+            this.btn_Tim.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Tim.Name = "btn_Tim";
+            this.btn_Tim.Size = new System.Drawing.Size(76, 29);
+            this.btn_Tim.TabIndex = 74;
+            this.btn_Tim.Text = "Tìm";
+            this.btn_Tim.UseVisualStyleBackColor = false;
+            this.btn_Tim.Click += new System.EventHandler(this.btn_Tim_Click);
             // 
             // frm_KhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 690);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_Tim);
+            this.Controls.Add(this.pn_QuanLyKhachHang);
             this.Controls.Add(this.btn_Them);
             this.Controls.Add(this.btn_Xoa);
             this.Controls.Add(this.btn_Sua);
@@ -296,8 +302,8 @@
             this.grb_ThongTin.ResumeLayout(false);
             this.grb_ThongTin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachKhachHang)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pn_QuanLyKhachHang.ResumeLayout(false);
+            this.pn_QuanLyKhachHang.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,8 +326,8 @@
         private System.Windows.Forms.TextBox txt_Timkiem;
         private System.Windows.Forms.Label lbl_TimKiem;
         private System.Windows.Forms.DataGridView dgv_DanhSachKhachHang;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pn_QuanLyKhachHang;
         private System.Windows.Forms.Label lbl_QuanLyKhachHang;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Tim;
     }
 }

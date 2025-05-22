@@ -35,6 +35,7 @@
             this.txt_MatKhau = new System.Windows.Forms.TextBox();
             this.btn_Thoat = new System.Windows.Forms.Button();
             this.btn_DangNhap = new System.Windows.Forms.Button();
+            this.lnk_DangKy = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lbl_DangNhap
@@ -100,6 +101,7 @@
             this.btn_Thoat.TabIndex = 3;
             this.btn_Thoat.Text = "Thoát";
             this.btn_Thoat.UseVisualStyleBackColor = true;
+            this.btn_Thoat.Click += new System.EventHandler(this.btn_Thoat_Click);
             // 
             // btn_DangNhap
             // 
@@ -113,11 +115,24 @@
             this.btn_DangNhap.UseVisualStyleBackColor = true;
             this.btn_DangNhap.Click += new System.EventHandler(this.btn_DangNhap_Click);
             // 
+            // lnk_DangKy
+            // 
+            this.lnk_DangKy.AutoSize = true;
+            this.lnk_DangKy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lnk_DangKy.Location = new System.Drawing.Point(218, 358);
+            this.lnk_DangKy.Name = "lnk_DangKy";
+            this.lnk_DangKy.Size = new System.Drawing.Size(217, 20);
+            this.lnk_DangKy.TabIndex = 5;
+            this.lnk_DangKy.TabStop = true;
+            this.lnk_DangKy.Text = "Chưa có tài khoản? Đăng ký";
+            this.lnk_DangKy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_DangKy_LinkClicked);
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 387);
+            this.Controls.Add(this.lnk_DangKy);
             this.Controls.Add(this.btn_DangNhap);
             this.Controls.Add(this.btn_Thoat);
             this.Controls.Add(this.txt_MatKhau);
@@ -144,5 +159,6 @@
         private System.Windows.Forms.TextBox txt_MatKhau;
         private System.Windows.Forms.Button btn_Thoat;
         private System.Windows.Forms.Button btn_DangNhap;
+        private System.Windows.Forms.LinkLabel lnk_DangKy;
     }
 }

@@ -1,5 +1,6 @@
 .vsidx/
 # Visual Studio temporary files
+# Visual Studio temporary files
 .vs/
 *.suo
 *.user

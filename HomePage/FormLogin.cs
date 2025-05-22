@@ -53,7 +53,6 @@ namespace HomePage
                 DataTable dt = lopDungChung.LayDuLieuTuBang(sql);
                 if (dt.Rows.Count > 0)
                 {
-                    MessageBox.Show("Đăng nhập thành công");
                     frm_Main mainForm = new frm_Main();
                     this.Hide();
                     mainForm.ShowDialog();
@@ -69,6 +68,17 @@ namespace HomePage
         private void txt_MatKhau_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void lnk_DangKy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+             FormDangKy  formDangKy = new FormDangKy();
+            formDangKy.ShowDialog();
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

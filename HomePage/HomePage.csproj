@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormDangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDangKy.Designer.cs">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDanhSachPhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     </Compile>
     <Compile Include="frm_BookingService.Designer.cs">
       <DependentUpon>frm_BookingService.cs</DependentUpon>
+	</Compile>
+    <Compile Include="frm_DatPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DatPhong.Designer.cs">
+      <DependentUpon>frm_DatPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_DichVu.cs">
       <SubType>Form</SubType>
@@ -98,9 +110,18 @@
     <Compile Include="frm_DichVu.Designer.cs">
       <DependentUpon>frm_DichVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_ThongTinDatPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongTinDatPhong.Designer.cs">
+      <DependentUpon>frm_ThongTinDatPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="LOPDUNGCHUNG.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormDangKy.resx">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDanhSachPhong.resx">
       <DependentUpon>FormDanhSachPhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,9 +136,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_BookingService.resx">
       <DependentUpon>frm_BookingService.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="frm_DatPhong.resx">
+      <DependentUpon>frm_DatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_DichVu.resx">
       <DependentUpon>frm_DichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongTinDatPhong.resx">
+      <DependentUpon>frm_ThongTinDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,8 +181,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="QuanLyKhachSan_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>QuanLyKhachSan.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
