@@ -98,6 +98,12 @@
     <Compile Include="frm_DichVu.Designer.cs">
       <DependentUpon>frm_DichVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_ThongTinDatPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongTinDatPhong.Designer.cs">
+      <DependentUpon>frm_ThongTinDatPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="LOPDUNGCHUNG.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_DichVu.resx">
       <DependentUpon>frm_DichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongTinDatPhong.resx">
+      <DependentUpon>frm_ThongTinDatPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

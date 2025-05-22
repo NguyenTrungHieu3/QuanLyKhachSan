@@ -65,8 +65,10 @@ namespace HomePage
                     // Đổi màu theo trạng thái
                     if (status == "1")
                         roomButton.BackColor = Color.LightGreen;
-                    else
+                    else if (status == "2")
                         roomButton.BackColor = Color.LightCoral;
+                    else
+                        roomButton.BackColor = Color.Yellow;
 
                     roomButton.Click += (s, e) =>
                     {
@@ -75,10 +77,15 @@ namespace HomePage
                             frm_DatPhong datPhong = new frm_DatPhong(roomID, roomTypeID, roomNumber, true);
                             datPhong.ShowDialog();
                         }
+                        else if (status == "2")
+                        {
+                            frm_ThongTinDatPhong chiTietDatPhong = new frm_ThongTinDatPhong(roomID, roomTypeID, roomNumber);
+                            chiTietDatPhong.ShowDialog();
+                        }
                         else
                         {
-                            MessageBox.Show("Phòng đã đặt");
-                        }
+                            MessageBox.Show("Phòng đang được dọn dẹp");
+                        }   
                         
                     };
                     flp_SoDoPhong.Controls.Add(roomButton);
