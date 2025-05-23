@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_KhachHang));
             this.btn_Them = new System.Windows.Forms.Button();
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
@@ -46,9 +47,11 @@
             this.pn_QuanLyKhachHang = new System.Windows.Forms.Panel();
             this.lbl_QuanLyKhachHang = new System.Windows.Forms.Label();
             this.btn_Tim = new System.Windows.Forms.Button();
+            this.pb_QuayLai = new System.Windows.Forms.PictureBox();
             this.grb_ThongTin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachKhachHang)).BeginInit();
             this.pn_QuanLyKhachHang.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_QuayLai)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Them
@@ -242,8 +245,8 @@
             // 
             // pn_QuanLyKhachHang
             // 
-
             this.pn_QuanLyKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.pn_QuanLyKhachHang.Controls.Add(this.pb_QuayLai);
             this.pn_QuanLyKhachHang.Controls.Add(this.lbl_QuanLyKhachHang);
             this.pn_QuanLyKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_QuanLyKhachHang.Location = new System.Drawing.Point(0, 0);
@@ -251,15 +254,13 @@
             this.pn_QuanLyKhachHang.Name = "pn_QuanLyKhachHang";
             this.pn_QuanLyKhachHang.Size = new System.Drawing.Size(1312, 74);
             this.pn_QuanLyKhachHang.TabIndex = 73;
-
-
             // 
             // lbl_QuanLyKhachHang
             // 
             this.lbl_QuanLyKhachHang.AutoSize = true;
             this.lbl_QuanLyKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_QuanLyKhachHang.ForeColor = System.Drawing.Color.White;
-            this.lbl_QuanLyKhachHang.Location = new System.Drawing.Point(16, 22);
+            this.lbl_QuanLyKhachHang.Location = new System.Drawing.Point(65, 21);
             this.lbl_QuanLyKhachHang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_QuanLyKhachHang.Name = "lbl_QuanLyKhachHang";
             this.lbl_QuanLyKhachHang.Size = new System.Drawing.Size(340, 31);
@@ -280,6 +281,19 @@
             this.btn_Tim.Text = "Tìm";
             this.btn_Tim.UseVisualStyleBackColor = false;
             this.btn_Tim.Click += new System.EventHandler(this.btn_Tim_Click);
+            // 
+            // pb_QuayLai
+            // 
+            this.pb_QuayLai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pb_QuayLai.Image = ((System.Drawing.Image)(resources.GetObject("pb_QuayLai.Image")));
+            this.pb_QuayLai.InitialImage = ((System.Drawing.Image)(resources.GetObject("pb_QuayLai.InitialImage")));
+            this.pb_QuayLai.Location = new System.Drawing.Point(12, 22);
+            this.pb_QuayLai.Name = "pb_QuayLai";
+            this.pb_QuayLai.Size = new System.Drawing.Size(30, 30);
+            this.pb_QuayLai.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_QuayLai.TabIndex = 15;
+            this.pb_QuayLai.TabStop = false;
+            this.pb_QuayLai.Click += new System.EventHandler(this.pb_QuayLai_Click);
             // 
             // frm_KhachHang
             // 
@@ -304,6 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachKhachHang)).EndInit();
             this.pn_QuanLyKhachHang.ResumeLayout(false);
             this.pn_QuanLyKhachHang.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_QuayLai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +344,6 @@
         private System.Windows.Forms.Panel pn_QuanLyKhachHang;
         private System.Windows.Forms.Label lbl_QuanLyKhachHang;
         private System.Windows.Forms.Button btn_Tim;
+        private System.Windows.Forms.PictureBox pb_QuayLai;
     }
 }

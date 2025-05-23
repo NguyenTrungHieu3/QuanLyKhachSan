@@ -10,13 +10,16 @@ namespace HomePage
 {
     class LOPDUNGCHUNG
     {
-        string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\CS-464-FIS\CSHARP\Lesson03-Winforms\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
+        string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\C#_Data\Git_Source\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
         SqlConnection conn;
 
         public LOPDUNGCHUNG()
         {
+<<<<<<< HEAD
             string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Lap_Trinh_Ung_Dung_NET\BaiGROUP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
 
+=======
+>>>>>>> branch-tuan-03
             conn = new SqlConnection(chuoiKn);
         }
 

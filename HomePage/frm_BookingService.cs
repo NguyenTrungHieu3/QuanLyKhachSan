@@ -14,6 +14,7 @@ namespace HomePage
     public partial class frm_BookingService: Form
     {
         LOPDUNGCHUNG lopchung = new LOPDUNGCHUNG();
+        int ID = 2;
         public frm_BookingService()
         {
             InitializeComponent();
@@ -21,21 +22,30 @@ namespace HomePage
         public void LoadForm()
         {
 
-            string query = "Select bs.BookingServiceID, s.ServiceName, bs.Quantity, bs.TotalAmount from BookingServices bs join Services s ON bs.ServiceID = s.ServiceID";
-            dataGridView2.DataSource = lopchung.LayDuLieuTuBang(query);
-            dataGridView2.Columns["BookingServiceID"].HeaderText = "STT";
-            dataGridView2.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
-            dataGridView2.Columns["Quantity"].HeaderText = "Số lượng";
-            dataGridView2.Columns["TotalAmount"].HeaderText = "Thành tiền";
+            string query = "Select bs.BookingServiceID, s.ServiceName, bs.Quantity, bs.TotalAmount from BookingServices bs Join Services s ON bs.ServiceID = s.ServiceID";
+            try
+            {
+                dataGridView2.DataSource = lopchung.LayDuLieuTuBang(query);
+                dataGridView2.Columns["BookingServiceID"].HeaderText = "STT";
+                dataGridView2.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
+                dataGridView2.Columns["Quantity"].HeaderText = "Số lượng";
+                dataGridView2.Columns["TotalAmount"].HeaderText = "Thành tiền";
 
-            dataGridView2.Columns["BookingServiceID"].Width = 50;
-            dataGridView2.Columns["ServiceName"].Width = 200;
-            dataGridView2.Columns["Quantity"].Width = 100;
-            dataGridView2.Columns["TotalAmount"].Width = 95;
+                dataGridView2.Columns["BookingServiceID"].Width = 50;
+                dataGridView2.Columns["ServiceName"].Width = 200;
+                dataGridView2.Columns["Quantity"].Width = 100;
+                dataGridView2.Columns["TotalAmount"].Width = 95;
 
-            string queryBS = "Select SUM(TotalAmount) from BookingServices";
-            decimal TongTien = (decimal)lopchung.LayGiaTri(queryBS);
-            lbl_TongTien.Text = TongTien.ToString();
+                string queryBS = "Select SUM(TotalAmount) from BookingServices";
+                object result = lopchung.LayGiaTri(queryBS);
+                decimal TongTien = result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+                lbl_TongTien.Text = TongTien.ToString("N0");
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
         private void frm_BookingService_Load(object sender, EventArgs e)
@@ -96,8 +106,8 @@ namespace HomePage
 
         private void btn_ThemDichVu_Click(object sender, EventArgs e)
         {
-            string query = "Insert Into BookingServices (BookingID, ServiceID, Quantity, TotalAmount) Values('"+1+"', '"+cb_DichVu.SelectedValue+"', '"+num_SoLuong.Value+"', '"+lbl_Tong.Text+"')";
-            string checkquery = "Select Count(*) from BookingServices Where BookingID = '"+cb_DichVu.SelectedValue+"'";
+            string query = "Insert Into BookingServices (BookingID, ServiceID, Quantity, TotalAmount) Values('"+ID+"', '"+cb_DichVu.SelectedValue+"', '"+num_SoLuong.Value+"', '"+lbl_Tong.Text+"')";
+            string checkquery = "Select Count(*) from BookingServices Where ServiceID = '"+cb_DichVu.SelectedValue+"'";
             try
             {
                 int count = (int)lopchung.LayGiaTri(checkquery);
@@ -153,6 +163,20 @@ namespace HomePage
                 MessageBox.Show(ex.Message);
             }
             LoadForm();
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                cb_DichVu.SelectedValue = dataGridView2.CurrentRow.Cells[2].Value.ToString();
+                num_SoLuong.Value = Convert.ToDecimal(dataGridView2.CurrentRow.Cells[2].Value);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
