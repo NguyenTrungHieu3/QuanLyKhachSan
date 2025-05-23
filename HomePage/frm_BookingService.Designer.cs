@@ -377,7 +377,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frm_BookingService";
-            this.Text = "frm_BookingService";
+            this.Text = "Đặt dịch vụ";
             this.Load += new System.EventHandler(this.frm_BookingService_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

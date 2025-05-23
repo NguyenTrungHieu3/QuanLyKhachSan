@@ -66,9 +66,9 @@ namespace HomePage
                     if (status == "1")
                         roomButton.BackColor = Color.LightGreen;
                     else if (status == "2")
-                        roomButton.BackColor = Color.LightCoral;
-                    else
                         roomButton.BackColor = Color.Yellow;
+                    else
+                        roomButton.BackColor = Color.LightCoral;
 
                     roomButton.Click += (s, e) =>
                     {
@@ -79,7 +79,7 @@ namespace HomePage
                         }
                         else if (status == "2")
                         {
-                            frm_ThongTinDatPhong chiTietDatPhong = new frm_ThongTinDatPhong(roomID, roomTypeID, roomNumber);
+                            frm_ThongTinDatPhong chiTietDatPhong = new frm_ThongTinDatPhong();
                             chiTietDatPhong.ShowDialog();
                         }
                         else

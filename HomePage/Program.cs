@@ -16,11 +16,9 @@ namespace HomePage
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
             Application.Run(new frm_BookingService());
             //Application.Run(new frm_Login());
             //Application.Run(new frm_DanhSachPhong());
-=======
             //Application.Run(new frm_DichVu());
             //Application.Run(new frm_Login());
 
@@ -32,7 +30,6 @@ namespace HomePage
 
             Application.Run(new frm_Login());
             //Application.Run(new frm_Main());
->>>>>>> branch-hieu-01
         }
     }
 }
