@@ -91,6 +91,7 @@
             this.btn_Huy.TabIndex = 83;
             this.btn_Huy.Text = "HỦY";
             this.btn_Huy.UseVisualStyleBackColor = false;
+            this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
             // 
             // lb_hienThiChu
             // 
@@ -341,6 +342,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1312, 79);
             this.panel1.TabIndex = 79;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lb_hienThiPhong
             // 

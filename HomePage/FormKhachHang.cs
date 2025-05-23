@@ -170,5 +170,12 @@ namespace HomePage
 
 		}
 
-	}
+        private void pb_QuayLai_Click(object sender, EventArgs e)
+        {
+			frm_Main mainForm = new frm_Main();
+			this.Hide();
+			mainForm.ShowDialog();
+			this.Close();
+        }
+    }
 }

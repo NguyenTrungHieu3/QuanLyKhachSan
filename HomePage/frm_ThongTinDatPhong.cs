@@ -16,5 +16,15 @@ namespace HomePage
         {
             InitializeComponent();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_Huy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

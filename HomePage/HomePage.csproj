@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,7 +97,7 @@
     </Compile>
     <Compile Include="frm_BookingService.Designer.cs">
       <DependentUpon>frm_BookingService.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="frm_DatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,7 +136,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_BookingService.resx">
       <DependentUpon>frm_BookingService.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_DatPhong.resx">
       <DependentUpon>frm_DatPhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,8 +181,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="QuanLyKhachSan_log.ldf">
-      <DependentUpon>QuanLyKhachSan.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>QuanLyKhachSan.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

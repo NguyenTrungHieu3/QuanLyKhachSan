@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace HomePage
 {
@@ -77,6 +78,20 @@ namespace HomePage
             {
                 MessageBox.Show("Lỗi khi đăng ký: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pb_QuayLai_Click(object sender, EventArgs e)
+        {
+            frm_Login loginForm = new frm_Login();
+            this.Hide();
+            loginForm.Show();
+            this.Close();
+            
+        }
+
+        private void FormDangKy_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
