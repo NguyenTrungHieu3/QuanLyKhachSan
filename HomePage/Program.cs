@@ -16,18 +16,15 @@ namespace HomePage
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_BookingService());
+            //Application.Run(new frm_BookingService());
             //Application.Run(new frm_Login());
             //Application.Run(new frm_DanhSachPhong());
             //Application.Run(new frm_DichVu());
             //Application.Run(new frm_DatPhong());
             //Application.Run(new frm_Main());
-<<<<<<< HEAD
 
-            Application.Run(new frm_Login());
-            //Application.Run(new frm_Main());
-=======
->>>>>>> branch-tuan-03
+            //Application.Run(new frm_Login());
+            Application.Run(new frm_Main());
         }
     }
 }

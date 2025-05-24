@@ -14,10 +14,25 @@ namespace HomePage
     public partial class frm_BookingService: Form
     {
         LOPDUNGCHUNG lopchung = new LOPDUNGCHUNG();
+        
+        private BookingInfo booking;
+        private CustomerInfo customer;
+        private RoomInfo room;
+        private bool isFromDP = false;
+
         int ID = 2;
         public frm_BookingService()
         {
             InitializeComponent();
+        }
+
+        public frm_BookingService(BookingInfo bookingInfo , RoomInfo roomInfo , CustomerInfo customerInfo , bool fromDP = false)
+        {
+            InitializeComponent();
+            booking = bookingInfo;
+            room = roomInfo;
+            customer = customerInfo;
+            isFromDP = fromDP;
         }
         public void LoadForm()
         {
@@ -25,6 +40,12 @@ namespace HomePage
             string query = "Select bs.BookingServiceID, s.ServiceName, bs.Quantity, bs.TotalAmount from BookingServices bs Join Services s ON bs.ServiceID = s.ServiceID";
             try
             {
+                
+                lbl_MaDatPhong.Text = booking.BookingId.ToString();    
+                lbl_KhachHang.Text = customer.FullName;
+                lbl_Phong.Text = room.RoomNumber;
+             
+
                 dataGridView2.DataSource = lopchung.LayDuLieuTuBang(query);
                 dataGridView2.Columns["BookingServiceID"].HeaderText = "STT";
                 dataGridView2.Columns["ServiceName"].HeaderText = "Tên dịch vụ";
@@ -77,9 +98,17 @@ namespace HomePage
             {
                 object number = lopchung.LayGiaTri(query);
                 decimal price = number != null && number != DBNull.Value ? Convert.ToDecimal(number) : 0;
-                lbl_Tong.Text = (num_SoLuong.Value * price).ToString();
+                if (price == 0 || num_SoLuong.Value == 0)
+                {
+                    lbl_Tong.Text = "0";
+                }
+                else
+                {
+                    lbl_Tong.Text = (num_SoLuong.Value * price).ToString();
+                }
 
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -106,7 +135,7 @@ namespace HomePage
 
         private void btn_ThemDichVu_Click(object sender, EventArgs e)
         {
-            string query = "Insert Into BookingServices (BookingID, ServiceID, Quantity, TotalAmount) Values('"+ID+"', '"+cb_DichVu.SelectedValue+"', '"+num_SoLuong.Value+"', '"+lbl_Tong.Text+"')";
+            string query = "Insert Into BookingServices (BookingID, ServiceID, Quantity, TotalAmount) Values('"+booking.BookingId.ToString()+"', '"+cb_DichVu.SelectedValue+"', '"+num_SoLuong.Value+"', '"+decimal.Parse(lbl_Tong.Text)+"')";
             string checkquery = "Select Count(*) from BookingServices Where ServiceID = '"+cb_DichVu.SelectedValue+"'";
             try
             {
@@ -177,6 +206,11 @@ namespace HomePage
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

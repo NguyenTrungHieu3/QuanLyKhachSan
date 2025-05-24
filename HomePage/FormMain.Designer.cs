@@ -36,29 +36,26 @@
             this.lbl_SoPhongDaDat = new System.Windows.Forms.Label();
             this.lbl_SoPhongTrong = new System.Windows.Forms.Label();
             this.gb_MoTa = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_PhongDaDat = new System.Windows.Forms.Label();
-            this.pcb_PhongDaDat = new System.Windows.Forms.PictureBox();
-            this.pcb_PhongTrong = new System.Windows.Forms.PictureBox();
             this.lbl_PhongTrong = new System.Windows.Forms.Label();
             this.ms_ChucNang = new System.Windows.Forms.MenuStrip();
             this.quảnLýPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mi_DanhSachPhong = new System.Windows.Forms.ToolStripMenuItem();
             this.đặtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nhậnPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trảPhòngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mi_KhachHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.inHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýDịchVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mi_DichVu = new System.Windows.Forms.ToolStripMenuItem();
             this.flp_SoDoPhong = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýHóaĐơnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gb_ThongKe.SuspendLayout();
             this.gb_MoTa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_PhongDaDat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_PhongTrong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ms_ChucNang.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,33 +125,11 @@
             this.lbl_SoPhongTrong.TabIndex = 0;
             this.lbl_SoPhongTrong.Text = "Số phòng trống:";
             // 
-
-            // gb_SoDoPhong
-            // 
-
-            // 
-            // panel1
-            // 
-            // 
-            // pictureBox11
-            // 
- 
-            // 
-            // pictureBox12
-            // 
-        // 
-            // pictureBox13
-            // 
-   
-            // 
-            // pictureBox14
-            // 
-           
             // gb_MoTa
             // 
+            this.gb_MoTa.Controls.Add(this.pictureBox2);
+            this.gb_MoTa.Controls.Add(this.pictureBox1);
             this.gb_MoTa.Controls.Add(this.lbl_PhongDaDat);
-            this.gb_MoTa.Controls.Add(this.pcb_PhongDaDat);
-            this.gb_MoTa.Controls.Add(this.pcb_PhongTrong);
             this.gb_MoTa.Controls.Add(this.lbl_PhongTrong);
             this.gb_MoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.gb_MoTa.Location = new System.Drawing.Point(23, 573);
@@ -166,42 +141,36 @@
             this.gb_MoTa.TabStop = false;
             this.gb_MoTa.Text = " Mô tả ";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(56, 103);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(38, 43);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(56, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 43);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            // 
             // lbl_PhongDaDat
             // 
             this.lbl_PhongDaDat.AutoSize = true;
             this.lbl_PhongDaDat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_PhongDaDat.Location = new System.Drawing.Point(101, 108);
+            this.lbl_PhongDaDat.Location = new System.Drawing.Point(101, 116);
             this.lbl_PhongDaDat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_PhongDaDat.Name = "lbl_PhongDaDat";
             this.lbl_PhongDaDat.Size = new System.Drawing.Size(119, 20);
             this.lbl_PhongDaDat.TabIndex = 11;
             this.lbl_PhongDaDat.Text = "Phòng đã đặt";
-            // 
-            // pcb_PhongDaDat
-            // 
-            this.pcb_PhongDaDat.BackColor = System.Drawing.Color.White;
-            this.pcb_PhongDaDat.Image = ((System.Drawing.Image)(resources.GetObject("pcb_PhongDaDat.Image")));
-            this.pcb_PhongDaDat.InitialImage = ((System.Drawing.Image)(resources.GetObject("pcb_PhongDaDat.InitialImage")));
-            this.pcb_PhongDaDat.Location = new System.Drawing.Point(36, 98);
-            this.pcb_PhongDaDat.Margin = new System.Windows.Forms.Padding(4);
-            this.pcb_PhongDaDat.Name = "pcb_PhongDaDat";
-            this.pcb_PhongDaDat.Size = new System.Drawing.Size(41, 48);
-            this.pcb_PhongDaDat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcb_PhongDaDat.TabIndex = 10;
-            this.pcb_PhongDaDat.TabStop = false;
-            // 
-            // pcb_PhongTrong
-            // 
-            this.pcb_PhongTrong.BackColor = System.Drawing.Color.White;
-            this.pcb_PhongTrong.Image = ((System.Drawing.Image)(resources.GetObject("pcb_PhongTrong.Image")));
-            this.pcb_PhongTrong.InitialImage = ((System.Drawing.Image)(resources.GetObject("pcb_PhongTrong.InitialImage")));
-            this.pcb_PhongTrong.Location = new System.Drawing.Point(36, 36);
-            this.pcb_PhongTrong.Margin = new System.Windows.Forms.Padding(4);
-            this.pcb_PhongTrong.Name = "pcb_PhongTrong";
-            this.pcb_PhongTrong.Size = new System.Drawing.Size(41, 48);
-            this.pcb_PhongTrong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcb_PhongTrong.TabIndex = 10;
-            this.pcb_PhongTrong.TabStop = false;
             // 
             // lbl_PhongTrong
             // 
@@ -235,9 +204,7 @@
             // 
             this.quảnLýPhòngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mi_DanhSachPhong,
-            this.đặtToolStripMenuItem,
-            this.nhậnPhòngToolStripMenuItem,
-            this.trảPhòngToolStripMenuItem});
+            this.đặtToolStripMenuItem});
             this.quảnLýPhòngToolStripMenuItem.Name = "quảnLýPhòngToolStripMenuItem";
             this.quảnLýPhòngToolStripMenuItem.Size = new System.Drawing.Size(149, 29);
             this.quảnLýPhòngToolStripMenuItem.Text = "Quản lý phòng";
@@ -256,23 +223,10 @@
             this.đặtToolStripMenuItem.Text = "Đặt phòng";
             this.đặtToolStripMenuItem.Click += new System.EventHandler(this.đặtToolStripMenuItem_Click);
             // 
-            // nhậnPhòngToolStripMenuItem
-            // 
-            this.nhậnPhòngToolStripMenuItem.Name = "nhậnPhòngToolStripMenuItem";
-            this.nhậnPhòngToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
-            this.nhậnPhòngToolStripMenuItem.Text = "Nhận phòng";
-            // 
-            // trảPhòngToolStripMenuItem
-            // 
-            this.trảPhòngToolStripMenuItem.Name = "trảPhòngToolStripMenuItem";
-            this.trảPhòngToolStripMenuItem.Size = new System.Drawing.Size(240, 30);
-            this.trảPhòngToolStripMenuItem.Text = "Trả phòng";
-            // 
             // quảnLýKháchHàngToolStripMenuItem
             // 
             this.quảnLýKháchHàngToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mi_KhachHang,
-            this.inHóaĐơnToolStripMenuItem});
+            this.mi_KhachHang});
             this.quảnLýKháchHàngToolStripMenuItem.Name = "quảnLýKháchHàngToolStripMenuItem";
             this.quảnLýKháchHàngToolStripMenuItem.Size = new System.Drawing.Size(187, 29);
             this.quảnLýKháchHàngToolStripMenuItem.Text = "Quản lý khách hàng";
@@ -280,35 +234,9 @@
             // mi_KhachHang
             // 
             this.mi_KhachHang.Name = "mi_KhachHang";
-
-            this.mi_KhachHang.Size = new System.Drawing.Size(191, 30);
-
-            this.mi_KhachHang.Size = new System.Drawing.Size(192, 30);
-
+            this.mi_KhachHang.Size = new System.Drawing.Size(224, 30);
             this.mi_KhachHang.Text = "Khách hàng";
             this.mi_KhachHang.Click += new System.EventHandler(this.mi_KhachHang_Click);
-            // 
-            // inHóaĐơnToolStripMenuItem
-            // 
-            this.inHóaĐơnToolStripMenuItem.Name = "inHóaĐơnToolStripMenuItem";
-
-            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(191, 30);
-
-            this.inHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
-
-            this.inHóaĐơnToolStripMenuItem.Text = "In hóa đơn";
-            // 
-            // quảnLýHóaĐơnToolStripMenuItem
-            // 
-            this.quảnLýHóaĐơnToolStripMenuItem.Name = "quảnLýHóaĐơnToolStripMenuItem";
-            this.quảnLýHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(163, 29);
-            this.quảnLýHóaĐơnToolStripMenuItem.Text = "Quản lý hóa đơn";
-            // 
-            // thốngKêToolStripMenuItem
-            // 
-            this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
-            this.thốngKêToolStripMenuItem.Text = "Thống kê";
             // 
             // quảnLýDịchVụToolStripMenuItem
             // 
@@ -344,6 +272,18 @@
             this.label5.TabIndex = 25;
             this.label5.Text = "SƠ ĐỒ PHÒNG";
             // 
+            // thốngKêToolStripMenuItem
+            // 
+            this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
+            this.thốngKêToolStripMenuItem.Text = "Thống kê";
+            // 
+            // quảnLýHóaĐơnToolStripMenuItem
+            // 
+            this.quảnLýHóaĐơnToolStripMenuItem.Name = "quảnLýHóaĐơnToolStripMenuItem";
+            this.quảnLýHóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(163, 29);
+            this.quảnLýHóaĐơnToolStripMenuItem.Text = "Quản lý hóa đơn";
+            // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -366,8 +306,8 @@
             this.gb_ThongKe.PerformLayout();
             this.gb_MoTa.ResumeLayout(false);
             this.gb_MoTa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_PhongDaDat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcb_PhongTrong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ms_ChucNang.ResumeLayout(false);
             this.ms_ChucNang.PerformLayout();
             this.ResumeLayout(false);
@@ -382,26 +322,23 @@
         private System.Windows.Forms.Label lbl_SoPhongTrong;
         private System.Windows.Forms.GroupBox gb_MoTa;
         private System.Windows.Forms.Label lbl_PhongTrong;
-        private System.Windows.Forms.PictureBox pcb_PhongTrong;
         private System.Windows.Forms.Label lbl_PhongDaDat;
-        private System.Windows.Forms.PictureBox pcb_PhongDaDat;
         private System.Windows.Forms.MenuStrip ms_ChucNang;
         private System.Windows.Forms.ToolStripMenuItem quảnLýPhòngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mi_DanhSachPhong;
         private System.Windows.Forms.ToolStripMenuItem đặtToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nhậnPhòngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem trảPhòngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quảnLýKháchHàngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mi_KhachHang;
-        private System.Windows.Forms.ToolStripMenuItem inHóaĐơnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýHóaĐơnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;
         private System.Windows.Forms.Label lbl_SoLuongPhongDaDat;
         private System.Windows.Forms.Label lbl_SoLuongPhongTrong;
         private System.Windows.Forms.ToolStripMenuItem quảnLýDịchVụToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mi_DichVu;
         private System.Windows.Forms.FlowLayoutPanel flp_SoDoPhong;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem quảnLýHóaĐơnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;
     }
 }
 

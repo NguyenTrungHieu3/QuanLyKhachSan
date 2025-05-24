@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_DatPhong = new System.Windows.Forms.Button();
-            this.btn_Huy = new System.Windows.Forms.Button();
+            this.btn_checkOut = new System.Windows.Forms.Button();
+            this.btn_quayVe = new System.Windows.Forms.Button();
             this.lb_hienThiChu = new System.Windows.Forms.Label();
             this.grb_ThongTinDP = new System.Windows.Forms.GroupBox();
             this.combo_tenPhong = new System.Windows.Forms.ComboBox();
@@ -58,42 +58,51 @@
             this.txt_maKH = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_TenKhachHang = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_dichVu = new System.Windows.Forms.Button();
+            this.dgv_dichVuDat = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lb_tienPhong = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lb_tienDV = new System.Windows.Forms.Label();
+            this.lb_tienTT = new System.Windows.Forms.Label();
+            this.lb_tienCoc = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.grb_ThongTinDP.SuspendLayout();
             this.panel1.SuspendLayout();
             this.grb_ThongTinKH.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dichVuDat)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_DatPhong
+            // btn_checkOut
             // 
-            this.btn_DatPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btn_DatPhong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_DatPhong.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_DatPhong.ForeColor = System.Drawing.Color.White;
-            this.btn_DatPhong.Location = new System.Drawing.Point(1051, 637);
-            this.btn_DatPhong.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_DatPhong.Name = "btn_DatPhong";
-            this.btn_DatPhong.Size = new System.Drawing.Size(154, 51);
-            this.btn_DatPhong.TabIndex = 82;
-            this.btn_DatPhong.Text = "CHECK OUT";
-            this.btn_DatPhong.UseVisualStyleBackColor = false;
+            this.btn_checkOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btn_checkOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_checkOut.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_checkOut.ForeColor = System.Drawing.Color.White;
+            this.btn_checkOut.Location = new System.Drawing.Point(1090, 651);
+            this.btn_checkOut.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_checkOut.Name = "btn_checkOut";
+            this.btn_checkOut.Size = new System.Drawing.Size(154, 51);
+            this.btn_checkOut.TabIndex = 82;
+            this.btn_checkOut.Text = "CHECK OUT";
+            this.btn_checkOut.UseVisualStyleBackColor = false;
             // 
-            // btn_Huy
+            // btn_quayVe
             // 
-            this.btn_Huy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btn_Huy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Huy.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Huy.ForeColor = System.Drawing.Color.White;
-            this.btn_Huy.Location = new System.Drawing.Point(840, 637);
-            this.btn_Huy.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Huy.Name = "btn_Huy";
-            this.btn_Huy.Size = new System.Drawing.Size(154, 51);
-            this.btn_Huy.TabIndex = 83;
-            this.btn_Huy.Text = "QUAY VỀ";
-            this.btn_Huy.UseVisualStyleBackColor = false;
-            this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
+            this.btn_quayVe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btn_quayVe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_quayVe.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_quayVe.ForeColor = System.Drawing.Color.White;
+            this.btn_quayVe.Location = new System.Drawing.Point(879, 651);
+            this.btn_quayVe.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_quayVe.Name = "btn_quayVe";
+            this.btn_quayVe.Size = new System.Drawing.Size(154, 51);
+            this.btn_quayVe.TabIndex = 83;
+            this.btn_quayVe.Text = "QUAY VỀ";
+            this.btn_quayVe.UseVisualStyleBackColor = false;
+            this.btn_quayVe.Click += new System.EventHandler(this.btn_Huy_Click);
             // 
             // lb_hienThiChu
             // 
@@ -437,59 +446,173 @@
             this.txt_TenKhachHang.Size = new System.Drawing.Size(289, 29);
             this.txt_TenKhachHang.TabIndex = 1;
             // 
-            // button1
+            // btn_dichVu
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(616, 107);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 51);
-            this.button1.TabIndex = 84;
-            this.button1.Text = "DỊCH VỤ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_dichVu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btn_dichVu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dichVu.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_dichVu.ForeColor = System.Drawing.Color.White;
+            this.btn_dichVu.Location = new System.Drawing.Point(616, 107);
+            this.btn_dichVu.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_dichVu.Name = "btn_dichVu";
+            this.btn_dichVu.Size = new System.Drawing.Size(154, 51);
+            this.btn_dichVu.TabIndex = 84;
+            this.btn_dichVu.Text = "DỊCH VỤ";
+            this.btn_dichVu.UseVisualStyleBackColor = false;
+            this.btn_dichVu.Click += new System.EventHandler(this.btn_dichVu_Click);
             // 
-            // dataGridView1
+            // dgv_dichVuDat
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(616, 183);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(628, 287);
-            this.dataGridView1.TabIndex = 85;
+            this.dgv_dichVuDat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_dichVuDat.Location = new System.Drawing.Point(616, 183);
+            this.dgv_dichVuDat.Name = "dgv_dichVuDat";
+            this.dgv_dichVuDat.RowHeadersWidth = 51;
+            this.dgv_dichVuDat.RowTemplate.Height = 24;
+            this.dgv_dichVuDat.Size = new System.Drawing.Size(628, 243);
+            this.dgv_dichVuDat.TabIndex = 85;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(613, 457);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 21);
+            this.label8.TabIndex = 77;
+            this.label8.Text = "Tiền phòng: ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label10.Location = new System.Drawing.Point(613, 497);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(168, 21);
+            this.label10.TabIndex = 87;
+            this.label10.Text = "Tổng tiền dịch vụ:";
+            // 
+            // lb_tienPhong
+            // 
+            this.lb_tienPhong.AutoSize = true;
+            this.lb_tienPhong.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_tienPhong.Location = new System.Drawing.Point(1154, 457);
+            this.lb_tienPhong.Name = "lb_tienPhong";
+            this.lb_tienPhong.Size = new System.Drawing.Size(80, 21);
+            this.lb_tienPhong.TabIndex = 88;
+            this.lb_tienPhong.Text = "1500000";
+            this.lb_tienPhong.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(613, 535);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(96, 21);
+            this.label11.TabIndex = 89;
+            this.label11.Text = "Tiền cọc: ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label12.Location = new System.Drawing.Point(613, 575);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(232, 21);
+            this.label12.TabIndex = 90;
+            this.label12.Text = "Tổng tiền cần thanh toán:";
+            // 
+            // lb_tienDV
+            // 
+            this.lb_tienDV.AutoSize = true;
+            this.lb_tienDV.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_tienDV.Location = new System.Drawing.Point(1164, 495);
+            this.lb_tienDV.Name = "lb_tienDV";
+            this.lb_tienDV.Size = new System.Drawing.Size(70, 21);
+            this.lb_tienDV.TabIndex = 91;
+            this.lb_tienDV.Text = "250000";
+            this.lb_tienDV.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lb_tienTT
+            // 
+            this.lb_tienTT.AutoSize = true;
+            this.lb_tienTT.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_tienTT.ForeColor = System.Drawing.Color.Red;
+            this.lb_tienTT.Location = new System.Drawing.Point(1154, 568);
+            this.lb_tienTT.Name = "lb_tienTT";
+            this.lb_tienTT.Size = new System.Drawing.Size(80, 21);
+            this.lb_tienTT.TabIndex = 93;
+            this.lb_tienTT.Text = "1250000";
+            this.lb_tienTT.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lb_tienCoc
+            // 
+            this.lb_tienCoc.AutoSize = true;
+            this.lb_tienCoc.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_tienCoc.Location = new System.Drawing.Point(1164, 536);
+            this.lb_tienCoc.Name = "lb_tienCoc";
+            this.lb_tienCoc.Size = new System.Drawing.Size(0, 21);
+            this.lb_tienCoc.TabIndex = 92;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1164, 532);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(70, 21);
+            this.label13.TabIndex = 94;
+            this.label13.Text = "500000";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // frm_ThongTinDatPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1312, 733);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btn_DatPhong);
-            this.Controls.Add(this.btn_Huy);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lb_tienTT);
+            this.Controls.Add(this.lb_tienCoc);
+            this.Controls.Add(this.lb_tienDV);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lb_tienPhong);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.dgv_dichVuDat);
+            this.Controls.Add(this.btn_dichVu);
+            this.Controls.Add(this.btn_checkOut);
+            this.Controls.Add(this.btn_quayVe);
             this.Controls.Add(this.grb_ThongTinDP);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.grb_ThongTinKH);
             this.Name = "frm_ThongTinDatPhong";
             this.Text = "DỊCH VỤ";
+            this.Load += new System.EventHandler(this.frm_ThongTinDatPhong_Load);
             this.grb_ThongTinDP.ResumeLayout(false);
             this.grb_ThongTinDP.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.grb_ThongTinKH.ResumeLayout(false);
             this.grb_ThongTinKH.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dichVuDat)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btn_DatPhong;
-        private System.Windows.Forms.Button btn_Huy;
+        private System.Windows.Forms.Button btn_checkOut;
+        private System.Windows.Forms.Button btn_quayVe;
         private System.Windows.Forms.Label lb_hienThiChu;
         private System.Windows.Forms.GroupBox grb_ThongTinDP;
         private System.Windows.Forms.ComboBox combo_tenPhong;
@@ -518,7 +641,16 @@
         private System.Windows.Forms.TextBox txt_maKH;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_TenKhachHang;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_dichVu;
+        private System.Windows.Forms.DataGridView dgv_dichVuDat;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lb_tienPhong;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lb_tienDV;
+        private System.Windows.Forms.Label lb_tienTT;
+        private System.Windows.Forms.Label lb_tienCoc;
+        private System.Windows.Forms.Label label13;
     }
 }

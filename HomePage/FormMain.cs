@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//Đã complete
 namespace HomePage
 {
     public partial class frm_Main : Form
@@ -37,10 +37,18 @@ namespace HomePage
         }
         public void LoadSDPhong()
         {
+            flp_SoDoPhong.Controls.Clear();
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Lap_Trinh_Ung_Dung_NET\BaiGROUP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True"; ;
+            string query = @"
+            SELECT r.RoomID, r.RoomNumber, r.ROOMTYPEID, r.STATUSID,
+                   c.CustomerID, c.FullName, c.CCCD_Passport, c.Phone,
+                   b.BookingID, b.CheckInDate, b.CheckOutDate, b.Deposit
+            FROM Rooms r
+            LEFT JOIN Bookings b ON r.RoomID = b.RoomID
+            LEFT JOIN Customers c ON b.CustomerID = c.CustomerID";
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\C#_Data\Git_Source\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True"; ;
-            string query = "SELECT RoomID ,  RoomNumber,ROOMTYPEID , STATUSID FROM Rooms";
 
+            
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
@@ -49,13 +57,35 @@ namespace HomePage
 
                 while (reader.Read())
                 {
-                    string roomNumber = reader["RoomNumber"].ToString();
-                    string status = reader["STATUSID"].ToString();
-                    int roomID = Convert.ToInt32(reader["RoomID"]);
-                    int roomTypeID = Convert.ToInt32(reader["RoomTypeID"]);
+                    
+
+                    BookingInfo booking = new BookingInfo 
+                    {
+                        BookingId = reader["BookingID"] != DBNull.Value ? Convert.ToInt32(reader["BookingID"]) : 0,
+                        CheckInDate = reader["CheckInDate"] != DBNull.Value ? Convert.ToDateTime(reader["CheckInDate"]) : DateTime.MinValue,
+                        CheckOutDate = reader["CheckOutDate"] != DBNull.Value ? Convert.ToDateTime(reader["CheckOutDate"]) : DateTime.MinValue,
+                        Deposit = reader["Deposit"] != DBNull.Value ? Convert.ToDecimal(reader["Deposit"]) : 0
+                    };
+
+                    RoomInfo room = new RoomInfo
+                    {
+                        RoomID = Convert.ToInt32(reader["RoomID"]),
+                        RoomNumber = reader["RoomNumber"].ToString(),
+                        RoomTypeID = Convert.ToInt32(reader["RoomTypeID"]),
+                        Status = reader["StatusID"].ToString()
+                    };
+
+
+                    CustomerInfo customer = new CustomerInfo
+                    {
+                        CustomerID = reader["CustomerID"] != DBNull.Value ? Convert.ToInt32(reader["CustomerID"]) : 0,
+                        FullName = reader["FullName"] != DBNull.Value ? reader["FullName"].ToString() : string.Empty,
+                        CCCD_Passport = reader["CCCD_Passport"] != DBNull.Value ? reader["CCCD_Passport"].ToString() : string.Empty,
+                        Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : string.Empty
+                    };
 
                     Button roomButton = new Button();
-                    roomButton.Text = roomNumber;
+                    roomButton.Text = room.RoomNumber;
                     roomButton.Width = 150;
                     roomButton.Height = 60;
                     roomButton.Margin = new Padding(10);
@@ -63,28 +93,24 @@ namespace HomePage
                     roomButton.Font = new Font("Segoe UI", 14, FontStyle.Bold);
 
                     // Đổi màu theo trạng thái
-                    if (status == "1")
+                    if (room.Status == "1")
                         roomButton.BackColor = Color.LightGreen;
-                    else if (status == "2")
-                        roomButton.BackColor = Color.Yellow;
                     else
                         roomButton.BackColor = Color.LightCoral;
-
+                    
                     roomButton.Click += (s, e) =>
                     {
-                        if(status == "1")
+                        if(room.Status == "1")
                         {
-                            frm_DatPhong datPhong = new frm_DatPhong(roomID, roomTypeID, roomNumber, true);
-                            datPhong.ShowDialog();
-                        }
-                        else if (status == "2")
-                        {
-                            frm_ThongTinDatPhong chiTietDatPhong = new frm_ThongTinDatPhong();
-                            chiTietDatPhong.ShowDialog();
+                            frm_DatPhong formDatPhong = new frm_DatPhong(room, true);
+                            formDatPhong.ShowDialog();
+                            LoadSDPhong();
+
                         }
                         else
                         {
-                            MessageBox.Show("Phòng đang được dọn dẹp");
+                            frm_ThongTinDatPhong chiTietDatPhong = new frm_ThongTinDatPhong(booking ,room , customer , true);
+                            chiTietDatPhong.ShowDialog();
                         }   
                         
                     };
@@ -95,8 +121,11 @@ namespace HomePage
         private void đặtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_DatPhong formDatPhong = new frm_DatPhong();
+            formDatPhong.FormClosed += (s, args) =>
+            {
+                LoadSDPhong(); // Gọi hàm reload sau khi form đóng
+            };
             formDatPhong.ShowDialog();
-            this.Close();
         }
 
         private void mc_NgayThang_DateChanged(object sender, DateRangeEventArgs e)
@@ -145,6 +174,11 @@ namespace HomePage
 
         {
 
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+ 
         }
     }
 }

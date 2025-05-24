@@ -6,32 +6,30 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HomePage
 {
-    public partial class frm_DatPhong : Form
+    public partial class frm_DatPhong : Form 
     {
-        private int selectedRoomID;
-        private int selectedRoomTypeID;
-        private string selectedRoomNumber;
+        //private int selectedRoomID;
+        //private int selectedRoomTypeID;
+        //private string selectedRoomNumber;
+        private RoomInfo room;
         private bool isFromMain = false;
-
         public frm_DatPhong()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        public frm_DatPhong(int roomId, int roomTypeId, string roomNumber, bool fromMain = false)
+        public frm_DatPhong(RoomInfo roomInfo, bool fromMain = false)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-
-            selectedRoomID = roomId;
-            selectedRoomTypeID = roomTypeId;
-            selectedRoomNumber = roomNumber;
+            room = roomInfo;
             isFromMain = fromMain;
         }
 
@@ -101,27 +99,31 @@ namespace HomePage
         {
             LoadLoaiPhong();
             txt_tienCoc.TextChanged += txt_tienCoc_TextChanged;
-            // Không cho chọn ngày check-in nhỏ hơn hôm nay
-            date_checkIn.MinDate = DateTime.Now;
+            DateTime now = DateTime.Now;
+            
+            date_checkIn.MinDate = DateTime.Today;
 
             // Gán ngày check-in = hôm nay, check-out = ngày mai
-            date_checkIn.Value = DateTime.Now;
-            date_checkOut.Value = DateTime.Today.AddDays(1).AddHours(14);
+            date_checkIn.Value = DateTime.Today;
+            date_checkOut.Value = DateTime.Today.AddDays(1);
 
             // Không cho chọn ngày check-out trước ngày mai
-            date_checkOut.MinDate = DateTime.Today.AddDays(1).AddHours(14);
+            date_checkOut.MinDate = DateTime.Today.AddDays(1);
+
+            date_ngayDP.MinDate = now;
+            date_ngayDP.Value = now;
 
             if (isFromMain)
             {
                 // Gán loại phòng và tên phòng theo lựa chọn từ MainForm
-                combo_loaiPhong.SelectedValue = selectedRoomTypeID;
+                combo_loaiPhong.SelectedValue = room.RoomTypeID;
                 combo_loaiPhong.Enabled = false;
 
-                LoadTenPhongTheoLoai(selectedRoomTypeID);
-                combo_tenPhong.SelectedValue = selectedRoomID;
+                LoadTenPhongTheoLoai(room.RoomTypeID);
+                combo_tenPhong.SelectedValue = room.RoomID;
                 combo_tenPhong.Enabled = false;
 
-                lb_hienThiPhong.Text = selectedRoomNumber;
+                lb_hienThiPhong.Text = room.RoomNumber;
             }
         }
 
@@ -330,7 +332,7 @@ namespace HomePage
             string tenKH = txt_TenKhachHang.Text;
             string cccd = txt_CCCD.Text;
             string sdt = txt_SoDienThoai.Text;
-            
+
             string ngayCheckIn = date_checkIn.Text;
             string ngayCheckOut = date_checkOut.Text;
             string tenPhong = combo_tenPhong.Text;
@@ -341,8 +343,8 @@ namespace HomePage
                 (tenKH, "Tên Khách Hàng"),
                 (cccd, "CCCD"),
                 (sdt, "Số Điện Thoại"),
-                (ngayCheckIn, "Ngày Check-In"),
-                (ngayCheckOut, "Ngày Check-Out"),
+                (ngayCheckIn, "Ngày Nhận Phòng"),
+                (ngayCheckOut, "Ngày Trả Phòng"),
                 (tenPhong, "Tên Phòng"),
                 (loaiPhong, "Loại Phòng"),
                 (tienCoc, "Tiền Cọc")
@@ -354,7 +356,21 @@ namespace HomePage
             }
             else
             {
-                tienCoc = tienCoc.Replace(".", "");
+
+                int customerId;
+                if (!int.TryParse(maKH, out customerId))
+                {
+                    MessageBox.Show("Mã khách hàng không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                decimal tienCoc1;
+                if (!decimal.TryParse(tienCoc.Replace(".", ""), out tienCoc1))
+                {
+                    MessageBox.Show("Tiền cọc không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 string queryKiemTraKH = "SELECT COUNT(*) FROM Customers WHERE CCCD_Passport = '" + cccd + "'";
                 int checkKH = (int)chung.LayGiaTri(queryKiemTraKH);
 
@@ -365,7 +381,7 @@ namespace HomePage
                     re1 = chung.ThemSuaXoa(queryThemKH);
                 }
 
-                string queryThemBooking = "INSERT INTO Bookings (CustomerID , RoomID , CheckInDate , CheckOutDate , Deposit) VALUES ('" + int.Parse(maKH) + "' , '" + int.Parse(maPhong) + "' , Convert(datetime,'" + ngayCheckIn + "',103) , Convert(datetime,'" + ngayCheckOut + "',103) , '" + decimal.Parse(tienCoc) + "' )";
+                string queryThemBooking = "INSERT INTO Bookings (CustomerID , RoomID , CheckInDate , CheckOutDate , Deposit) VALUES ('" + int.Parse(maKH) + "' , '" + int.Parse(maPhong) + "' , Convert(datetime,'" + ngayCheckIn + "',103) , Convert(datetime,'" + ngayCheckOut + "',103) , '" + tienCoc1 + "' )";
                 int re = chung.ThemSuaXoa(queryThemBooking);
 
                 string querySetUpStatus = "UPDATE Rooms SET STATUSID = 2 WHERE RoomID = '"+ maPhong +"'";
@@ -376,8 +392,9 @@ namespace HomePage
                 {
                     MessageBox.Show("Đặt phòng thành công", "Thông báo", MessageBoxButtons.OK);
                     ClearFields(txt_maKH, txt_CCCD, txt_TenKhachHang, txt_SoDienThoai, date_checkIn, date_checkOut, txt_maDatPhong,txt_maPhong, combo_tenPhong,combo_loaiPhong, txt_tienCoc);
-
-
+                    lb_hienThiChu.Text = "";
+                    this.Close();
+                    
                 }
                 else
                 {
@@ -392,69 +409,20 @@ namespace HomePage
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        private void grb_ThongTinDP_Enter(object sender, EventArgs e)
         {
-            string maKH = txt_maKH.Text;
-            string maDPhong = txt_maDatPhong.Text;
-            string maPhong = txt_maPhong.Text;
 
-            string tenKH = txt_TenKhachHang.Text;
-            string cccd = txt_CCCD.Text;
-            string sdt = txt_SoDienThoai.Text;
+        }
 
-            string ngayCheckIn = date_checkIn.Text;
-            string ngayCheckOut = date_checkOut.Text;
-            string tenPhong = combo_tenPhong.Text;
-            string loaiPhong = combo_loaiPhong.Text.Trim();
-            string tienCoc = txt_tienCoc.Text;
+        private void data_ngayDP_ValueChanged(object sender, EventArgs e)
+        {
 
-            List<string> missingFields = GetNullOrEmptyFieldNames(
-                (tenKH, "Tên Khách Hàng"),
-                (cccd, "CCCD"),
-                (sdt, "Số Điện Thoại"),
-                (ngayCheckIn, "Ngày Check-In"),
-                (ngayCheckOut, "Ngày Check-Out"),
-                (tenPhong, "Tên Phòng"),
-                (loaiPhong, "Loại Phòng"),
-                (tienCoc, "Tiền Cọc")
-            );
+        }
 
-            if (missingFields.Any())
-            {
-                MessageBox.Show($"Vui lòng điền đầy đủ các trường sau: {string.Join(", ", missingFields)}", "Thông tin còn thiếu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                tienCoc = tienCoc.Replace(".", "");
-                string queryKiemTraKH = "SELECT COUNT(*) FROM Customers WHERE CCCD_Passport = '" + cccd + "'";
-                int checkKH = (int)chung.LayGiaTri(queryKiemTraKH);
-
-                int re1 = 0;
-                if (checkKH == 0)
-                {
-                    string queryThemKH = "INSERT INTO Customers (FullName, CCCD_Passport, Phone , Email) VALUES (N'" + tenKH + "' , '" + cccd + "' , '" + sdt + "' , NULL )";
-                    re1 = chung.ThemSuaXoa(queryThemKH);
-                }
-
-                string queryThemBooking = "INSERT INTO Bookings (CustomerID , RoomID , CheckInDate , CheckOutDate , Deposit) VALUES ('" + int.Parse(maKH) + "' , '" + int.Parse(maPhong) + "' , Convert(datetime,'" + ngayCheckIn + "',103) , Convert(datetime,'" + ngayCheckOut + "',103) , '" + decimal.Parse(tienCoc) + "' )";
-                int re = chung.ThemSuaXoa(queryThemBooking);
-
-                string querySetUpStatus = "UPDATE Rooms SET STATUSID = 3 WHERE RoomID = '" + maPhong + "'";
-                int re2 = chung.ThemSuaXoa(querySetUpStatus);
-
-
-                if (re > 0 && re2 > 0)
-                {
-                    MessageBox.Show("Chờ xác nhận phòng thành công", "Thông báo", MessageBoxButtons.OK);
-                    ClearFields(txt_maKH, txt_CCCD, txt_TenKhachHang, txt_SoDienThoai, date_checkIn, date_checkOut, txt_maDatPhong, txt_maPhong, combo_tenPhong, combo_loaiPhong, txt_tienCoc);
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Chờ xác nhận phòng không thành công", "Thông báo", MessageBoxButtons.OK);
-                }
-            }
+        private void grb_ThongTinKH_Enter(object sender, EventArgs e)
+        {
 
         }
     }

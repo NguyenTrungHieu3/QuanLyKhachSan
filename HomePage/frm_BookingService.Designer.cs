@@ -105,11 +105,11 @@
             // lbl_KhachHang
             // 
             this.lbl_KhachHang.AutoSize = true;
-            this.lbl_KhachHang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_KhachHang.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_KhachHang.Location = new System.Drawing.Point(147, 127);
             this.lbl_KhachHang.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_KhachHang.Name = "lbl_KhachHang";
-            this.lbl_KhachHang.Size = new System.Drawing.Size(55, 23);
+            this.lbl_KhachHang.Size = new System.Drawing.Size(59, 23);
             this.lbl_KhachHang.TabIndex = 4;
             this.lbl_KhachHang.Text = "label5";
             // 
@@ -127,11 +127,11 @@
             // lbl_Phong
             // 
             this.lbl_Phong.AutoSize = true;
-            this.lbl_Phong.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_Phong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Phong.Location = new System.Drawing.Point(442, 127);
             this.lbl_Phong.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Phong.Name = "lbl_Phong";
-            this.lbl_Phong.Size = new System.Drawing.Size(55, 23);
+            this.lbl_Phong.Size = new System.Drawing.Size(59, 23);
             this.lbl_Phong.TabIndex = 6;
             this.lbl_Phong.Text = "label7";
             // 
@@ -182,33 +182,33 @@
             // lbl_DonGia
             // 
             this.lbl_DonGia.AutoSize = true;
-            this.lbl_DonGia.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_DonGia.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_DonGia.Location = new System.Drawing.Point(121, 310);
             this.lbl_DonGia.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_DonGia.Name = "lbl_DonGia";
-            this.lbl_DonGia.Size = new System.Drawing.Size(64, 23);
+            this.lbl_DonGia.Size = new System.Drawing.Size(69, 23);
             this.lbl_DonGia.TabIndex = 13;
             this.lbl_DonGia.Text = "label13";
             // 
             // lbl_Tong
             // 
             this.lbl_Tong.AutoSize = true;
-            this.lbl_Tong.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_Tong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Tong.Location = new System.Drawing.Point(464, 310);
             this.lbl_Tong.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_Tong.Name = "lbl_Tong";
-            this.lbl_Tong.Size = new System.Drawing.Size(64, 23);
+            this.lbl_Tong.Size = new System.Drawing.Size(15, 23);
             this.lbl_Tong.TabIndex = 17;
-            this.lbl_Tong.Text = "label17";
+            this.lbl_Tong.Text = " ";
             // 
             // lbl_MaDatPhong
             // 
             this.lbl_MaDatPhong.AutoSize = true;
-            this.lbl_MaDatPhong.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_MaDatPhong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_MaDatPhong.Location = new System.Drawing.Point(147, 84);
             this.lbl_MaDatPhong.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_MaDatPhong.Name = "lbl_MaDatPhong";
-            this.lbl_MaDatPhong.Size = new System.Drawing.Size(55, 23);
+            this.lbl_MaDatPhong.Size = new System.Drawing.Size(59, 23);
             this.lbl_MaDatPhong.TabIndex = 2;
             this.lbl_MaDatPhong.Text = "label3";
             // 
@@ -302,15 +302,17 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách dịch vụ đã chọn";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lbl_TongTien
             // 
             this.lbl_TongTien.AutoSize = true;
-            this.lbl_TongTien.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbl_TongTien.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TongTien.ForeColor = System.Drawing.Color.Red;
             this.lbl_TongTien.Location = new System.Drawing.Point(464, 225);
             this.lbl_TongTien.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbl_TongTien.Name = "lbl_TongTien";
-            this.lbl_TongTien.Size = new System.Drawing.Size(64, 23);
+            this.lbl_TongTien.Size = new System.Drawing.Size(69, 23);
             this.lbl_TongTien.TabIndex = 15;
             this.lbl_TongTien.Text = "label15";
             // 
