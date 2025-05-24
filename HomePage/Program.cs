@@ -23,8 +23,7 @@ namespace HomePage
             //Application.Run(new frm_DatPhong());
             //Application.Run(new frm_Main());
 
-            //Application.Run(new frm_Login());
-            Application.Run(new frm_Main());
+            Application.Run(new frm_Login());
         }
     }
 }

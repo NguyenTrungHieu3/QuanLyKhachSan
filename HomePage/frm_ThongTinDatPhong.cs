@@ -106,8 +106,8 @@ namespace HomePage
                 txt_tienCoc.Text = booking.Deposit.ToString();
 
                 lb_hienThiPhong.Text = room.RoomNumber;
-                LoadDV();
             }
+            LoadDV();
         }
 
         private void btn_dichVu_Click(object sender, EventArgs e)

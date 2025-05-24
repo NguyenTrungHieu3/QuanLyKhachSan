@@ -238,7 +238,7 @@ namespace HomePage
             {
                 return;
             }
-            string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Lap_Trinh_Ung_Dung_NET\BaiGROUP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
+            string chuoiKn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\C#_Data\Git_Source\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True";
 
             using (SqlConnection conn = new SqlConnection(chuoiKn))
             {

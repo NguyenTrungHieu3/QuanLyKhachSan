@@ -38,7 +38,7 @@ namespace HomePage
         public void LoadSDPhong()
         {
             flp_SoDoPhong.Controls.Clear();
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Lap_Trinh_Ung_Dung_NET\BaiGROUP\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True"; ;
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\C#_Data\Git_Source\QuanLyKhachSan\HomePage\QuanLyKhachSan.mdf;Integrated Security=True"; ;
             string query = @"
             SELECT r.RoomID, r.RoomNumber, r.ROOMTYPEID, r.STATUSID,
                    c.CustomerID, c.FullName, c.CCCD_Passport, c.Phone,

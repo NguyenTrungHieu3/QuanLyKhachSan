@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_DanhSachPhong));
             this.btn_Tim = new System.Windows.Forms.Button();
             this.pn_QuanLyPhong = new System.Windows.Forms.Panel();
             this.lbl_QuanLyKhachHang = new System.Windows.Forms.Label();
@@ -53,9 +54,11 @@
             this.lbl_TrangThaiTim = new System.Windows.Forms.Label();
             this.cb_LoaiPhongTim = new System.Windows.Forms.ComboBox();
             this.cb_TrangThaiTim = new System.Windows.Forms.ComboBox();
+            this.pb_QuayLai = new System.Windows.Forms.PictureBox();
             this.pn_QuanLyPhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachPhong)).BeginInit();
             this.grb_ThongTin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_QuayLai)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_Tim
@@ -76,6 +79,7 @@
             // pn_QuanLyPhong
             // 
             this.pn_QuanLyPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.pn_QuanLyPhong.Controls.Add(this.pb_QuayLai);
             this.pn_QuanLyPhong.Controls.Add(this.lbl_QuanLyKhachHang);
             this.pn_QuanLyPhong.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_QuanLyPhong.Location = new System.Drawing.Point(0, 0);
@@ -89,7 +93,7 @@
             this.lbl_QuanLyKhachHang.AutoSize = true;
             this.lbl_QuanLyKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_QuanLyKhachHang.ForeColor = System.Drawing.Color.White;
-            this.lbl_QuanLyKhachHang.Location = new System.Drawing.Point(16, 22);
+            this.lbl_QuanLyKhachHang.Location = new System.Drawing.Point(79, 21);
             this.lbl_QuanLyKhachHang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_QuanLyKhachHang.Name = "lbl_QuanLyKhachHang";
             this.lbl_QuanLyKhachHang.Size = new System.Drawing.Size(253, 31);
@@ -119,6 +123,7 @@
             this.dgv_DanhSachPhong.MultiSelect = false;
             this.dgv_DanhSachPhong.Name = "dgv_DanhSachPhong";
             this.dgv_DanhSachPhong.ReadOnly = true;
+            this.dgv_DanhSachPhong.RowHeadersWidth = 51;
             this.dgv_DanhSachPhong.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_DanhSachPhong.Size = new System.Drawing.Size(1153, 237);
             this.dgv_DanhSachPhong.TabIndex = 80;
@@ -375,6 +380,19 @@
             this.cb_TrangThaiTim.Size = new System.Drawing.Size(171, 30);
             this.cb_TrangThaiTim.TabIndex = 89;
             // 
+            // pb_QuayLai
+            // 
+            this.pb_QuayLai.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pb_QuayLai.Image = ((System.Drawing.Image)(resources.GetObject("pb_QuayLai.Image")));
+            this.pb_QuayLai.InitialImage = ((System.Drawing.Image)(resources.GetObject("pb_QuayLai.InitialImage")));
+            this.pb_QuayLai.Location = new System.Drawing.Point(30, 21);
+            this.pb_QuayLai.Name = "pb_QuayLai";
+            this.pb_QuayLai.Size = new System.Drawing.Size(30, 30);
+            this.pb_QuayLai.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_QuayLai.TabIndex = 16;
+            this.pb_QuayLai.TabStop = false;
+            this.pb_QuayLai.Click += new System.EventHandler(this.pb_QuayLai_Click);
+            // 
             // frm_DanhSachPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -403,6 +421,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSachPhong)).EndInit();
             this.grb_ThongTin.ResumeLayout(false);
             this.grb_ThongTin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_QuayLai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,5 +454,6 @@
         private System.Windows.Forms.Label lbl_TrangThaiTim;
         private System.Windows.Forms.ComboBox cb_LoaiPhongTim;
         private System.Windows.Forms.ComboBox cb_TrangThaiTim;
+        private System.Windows.Forms.PictureBox pb_QuayLai;
     }
 }
